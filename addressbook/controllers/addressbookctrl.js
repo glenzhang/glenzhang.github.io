@@ -100,6 +100,7 @@ angular.module("addressbook").controller("AddressBookCtrl", function AddressBook
     };
 
     $scope.soryColumn = "id";
+    $scope.reverse = false;
 
     $scope.toggleSort = function (sc) {
         if ($scope.sortColumn === sc) {
