@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Carousel</title>
+    <style type="text/css">
+        * { margin: 0; padding: 0;}
+        .awards_show { float:left; width: 50%; margin: 200px; border: 1px solid #ccc; overflow: hidden;}
+       .awards_show ul {float:left; width:100000px; list-style-type: none; }
+       .awards_show ul li { float: left; margin-left: 10px;  }
+
+        .awards_show_v {margin-top:140px; border:1px solid #fea; height:140px; overflow:hidden;}
+        .awards_show_v ul { list-style-type: none; }
+        .awards_show_v ul li { height: 28px;}
+
+    </style>
+    <script type="text/javascript" src="../common/libs/jquery/jquery-1.11.1.js"></script>
+    <script type="text/javascript">
+        (function ($)
+        {
+            var defaults =
+                {
+                    scrollType: "H",
+                    timer: 4000
+                };
+           
+            $.fn.contentScroll = function (options)
+            {
+                var settings = $.extend(true, {}, defaults, options);
+                var VH = { V: verticalScroll, H: horizontalScroll };
+                var $container;
+                var intervalId;
+
+                return this.each(function ()
+                {
+                    $container = $(this);
+                    $container.hover(stop, start);
+                    start();
+                });
+
+                function applyBehavior()
+                {
+                    var firstUl = $container.find("ul:first");
+                    var firstLi = firstUl.find("li:first");
+                    VH[settings.scrollType](firstUl, firstLi);
+                }
+
+                function verticalScroll(fu, fi)
+                {
+                    var height = -(fi.outerHeight(true)) + "px";
+                    fu.animate({ marginTop: height }, 800, function ()
+                    {
+                        $(this).css({ marginTop: "0px" }).find("li:first").appendTo(this);
+                    });
+                }
+
+                function horizontalScroll(fu, fi)
+                {
+                    var width = -(fi.outerWidth(true)) + "px";
+                    fu.animate({ marginLeft: width }, 800, function ()
+                    {
+                        $(this).css({ marginLeft: "0px" }).find("li:first").appendTo(this);
+                    });
+                }
+
+                function start()
+                {
+                    intervalId = setInterval(function () { applyBehavior(); }, settings.timer);
+                }
+
+                function stop()
+                {
+                    clearInterval(intervalId);
+                }
+            };
+
+            $.fn.contentScroll.defaults = defaults;
+
+        })(jQuery);
+    </script>
+    
+</head>
+<body>
+    <div class="awards_show" id="aws" style="display: block;">
+        <ul style="margin-top: 0px;">
+            <li><span class="as0">snitxau</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">温州佳音</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">木呆呆1101</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">万家1234</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">向洪丽1</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">虐小欠ww</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">jjlucy</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">兴之佳佳</span><span class="as1">阿狸限量版化妆棉 </span></li>
+            <li><span class="as0">lziting</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">yt_cherry</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">我是薛哥</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">清秋69</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">小猫026</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">琼子1122</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">雨轩雯</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">meixue2011</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">枚中伤月</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">桃小花</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">a1ways211 </span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">jsyanfs</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">宝baof</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">dd4dhr</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">暮雨如言</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">碧姬娃娃</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">高婷108</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">梦苏儿</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">吱吱吱吱吱吱</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">寒武泓凌</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">佐为totoro</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">狐狸小萱</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">小司酱</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">土豆坨坨</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">樱桃的忧伤</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">紫静冰情</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">迷途小猪</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">葵的糖糖</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">海深优鱼</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">淘子CC</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">歆茹</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">鑫林水灶</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">戎龙宝宝</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">晓小鑫</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">寒月七</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">lq少少754526208</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">cacty</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">我爱雪千寻</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">mosquito1985</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">微澜浅馨</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">ice-blue</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">lilinDove</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">shatzi</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">花米暮</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">lq7727</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">点绛唇AC</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">王雅岚</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">zenzen0927</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">dubeijian</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">miya11</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">vivi2046</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">半海蒲公英</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">葛格馨</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">紫雾缳林</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">青诺轩</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">黄喵喵mm</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">容儿姐姐</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">钟小欢</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">七十九度蓝</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">公主的迷信</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">朵朵莎</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">迷你公仔</span><span class="as1">小熊仔温暖手套</span></li>
+            <li><span class="as0">胡曼珍</span><span class="as1">小熊仔温暖手套</span></li>
+            <li><span class="as0">萝卜珠</span><span class="as1">小熊仔温暖手套</span></li>
+            <li><span class="as0">520迷糊兔Baby</span><span class="as1">小熊仔温暖手套</span></li>
+            <li><span class="as0">默兮兮</span><span class="as1">小熊仔温暖手套</span></li>
+            <li><span class="as0">小九妹</span><span class="as1">小熊仔温暖手套</span></li>
+            <li><span class="as0">木可习习218</span><span class="as1">小熊仔温暖手套</span></li>
+            <li><span class="as0">小南风</span><span class="as1">小熊仔温暖手套</span></li>
+            <li><span class="as0">冰淇星星</span><span class="as1">小熊仔温暖手套</span></li>
+            <li><span class="as0">lulu彭</span><span class="as1">小熊仔温暖手套</span></li>
+            <li><span class="as0">飞飞橙</span><span class="as1">毛毛雪地靴</span></li>
+            <li><span class="as0">半日黄昏</span><span class="as1">毛毛雪地靴</span></li>
+            <li><span class="as0">乐橙懒虫薇</span><span class="as1">毛毛雪地靴</span></li>
+            <li><span class="as0">小饭田田</span><span class="as1">毛毛雪地靴</span></li>
+            <li><span class="as0">饼干星星糖</span><span class="as1">毛毛雪地靴</span></li>
+            <li><span class="as0">拉落的秀</span><span class="as1">毛毛雪地靴</span></li>
+            <li><span class="as0">棒棒猫</span><span class="as1">毛毛雪地靴</span></li>
+            <li><span class="as0">碧海银狐</span><span class="as1">毛毛雪地靴</span></li>
+            <li><span class="as0">丁旭玉</span><span class="as1">毛毛雪地靴</span></li>
+            <li><span class="as0">小米嘟嘟</span><span class="as1">毛毛雪地靴</span></li>
+            <li><span class="as0">我是宝贝鱼鱼</span><span class="as1">大脚丫取暖宝</span></li>
+            <li><span class="as0">蔡维尼的蜜罐</span><span class="as1">大脚丫取暖宝</span></li>
+            <li><span class="as0">王静瑶</span><span class="as1">大脚丫取暖宝</span></li>
+            <li><span class="as0">天使猪猪Amy</span><span class="as1">大脚丫取暖宝</span></li>
+            <li><span class="as0">大脚吖</span><span class="as1">大脚丫取暖宝</span></li>
+            <li><span class="as0">杨艳红</span><span class="as1">大脚丫取暖宝</span></li>
+            <li><span class="as0">梁山寨</span><span class="as1">大脚丫取暖宝</span></li>
+            <li><span class="as0">小熊维杰</span><span class="as1">大脚丫取暖宝</span></li>
+            <li><span class="as0">bscl</span><span class="as1">大脚丫取暖宝</span></li>
+            <li><span class="as0">风中铃声</span><span class="as1">阿狸限量版化妆棉</span></li>
+        </ul>
+    </div>
+
+
+
+    <div class="awards_show_v" id="assss" style="display: block;">
+        <ul style="margin-top: 0px;">
+            <li><span class="as0">snitxau</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">温州佳音</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">木呆呆1101</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">万家1234</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">向洪丽1</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">虐小欠ww</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">jjlucy</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">兴之佳佳</span><span class="as1">阿狸限量版化妆棉 </span></li>
+            <li><span class="as0">lziting</span><span class="as1">阿狸限量版化妆棉</span></li>
+            <li><span class="as0">yt_cherry</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">我是薛哥</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">清秋69</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">小猫026</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">琼子1122</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">雨轩雯</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">meixue2011</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">枚中伤月</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">桃小花</span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">a1ways211 </span><span class="as1">冬季加厚可爱兔毛袜</span></li>
+            <li><span class="as0">jsyanfs</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">宝baof</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">dd4dhr</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">暮雨如言</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">碧姬娃娃</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">高婷108</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">梦苏儿</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">吱吱吱吱吱吱</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">寒武泓凌</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">佐为totoro</span><span class="as1">草莓雪花圆点针织手套</span></li>
+            <li><span class="as0">狐狸小萱</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">小司酱</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">土豆坨坨</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">樱桃的忧伤</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">紫静冰情</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">迷途小猪</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">葵的糖糖</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">海深优鱼</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">淘子CC</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">歆茹</span><span class="as1">冬季可爱五星帽</span></li>
+            <li><span class="as0">鑫林水灶</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">戎龙宝宝</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">晓小鑫</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">寒月七</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">lq少少754526208</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">cacty</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">我爱雪千寻</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">mosquito1985</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">微澜浅馨</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">ice-blue</span><span class="as1">哑光仿皮打底裤</span></li>
+            <li><span class="as0">lilinDove</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">shatzi</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">花米暮</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">lq7727</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">点绛唇AC</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">王雅岚</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">zenzen0927</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">dubeijian</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">miya11</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">vivi2046</span><span class="as1">小猫刺绣打底裤</span></li>
+            <li><span class="as0">半海蒲公英</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">葛格馨</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">紫雾缳林</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">青诺轩</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">黄喵喵mm</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">容儿姐姐</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">钟小欢</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">七十九度蓝</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">公主的迷信</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">朵朵莎</span><span class="as1">加绒牛仔裤</span></li>
+            <li><span class="as0">迷你公仔</span><span class="as1">小熊仔温暖手套</span></li>
+            <li><span class="as0">胡曼珍</span><span class="as1">小熊仔温暖手套</span></li>
+            <li><span class="as0">萝卜珠</span><span class="as1">小熊仔温暖手套</span></li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        (function ()
+        {
+            $("#aws").contentScroll();
+            $("#assss").contentScroll({scrollType: "V"});
+
+        })();
+    </script>
+
+</body>
+</html>
