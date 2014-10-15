@@ -999,147 +999,60 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>GRUNT</title></head><body><article class="markdown-body"><h1 id="grunt"><a name="user-content-grunt" href="#grunt" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Grunt工作流</h1>
+</style><title>mongodb</title></head><body><article class="markdown-body"><h1 id="mongodbwindows"><a name="user-content-mongodbwindows" href="#mongodbwindows" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>mongodb简易指导(windows参考)</h1>
+<h2 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>安装</h2>
 <ol>
-<li>通常的工作流 编码 &ndash;&gt; 调试 &ndash;&gt; 上线</li>
-<li>加入Grunt后的工作流  <strong><em>启动Grunt</em></strong> &ndash;&gt; 编码 &ndash;&gt; 调试 &ndash;&gt; 上线</li>
-<li>Gurnt为非侵入式的，不影响当前工作流程</li>
-</ol>
-<h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>安装</h1>
-<ol>
-<li>所以的操作都是在node平台上，需要安装<a href="http://www.nodejs.org/">Node.js</a></li>
-<li>Grunt官方说明<a href="http://gruntjs.com/">Grunt.js</a>，请运行npm install -g grunt-cli</li>
-<li>sass编译环境依赖<a href="https://www.ruby-lang.org/zh_cn/downloads/">ruby</a>和<a href="http://rubygems.org/pages/download">gem</a>，安装后运行gem install sass</li>
-</ol>
-<h1 id="static"><a name="user-content-static" href="#static" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>接入static目录</h1>
-<ol>
-<li>添加pacekage.json, 增加相应的node modules</li>
-<li>添加Gruntfile.js, 添加需要的grunt命令</li>
-</ol>
-<h2 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>集成功能</h2>
-<ol>
-<li>sass编译 - 需要模块grunt-contrib-sass</li>
-<li>css sprite - 需要模块grunt-css-sprite</li>
-<li>js压缩 - 需要模块grunt-contrib-uglify</li>
-<li><strong>WILL ADD MORE</strong></li>
-</ol>
-<h2 id="gruntdemo"><a name="user-content-gruntdemo" href="#gruntdemo" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>实例gruntdemo</h2>
-<h3 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>目录分支为</h3>
-<pre><code>├── static
-    ├── gruntdemo/                
-        ├── css/    
-            ├── test_scss_nosprite.scss
-            ├── test_scss_sprite.tosprite.scss   
-            └── testcss.sprite.css 
-        ├── images/    
-            ├── slice/    
-                ├── a.png
-                ├── a@2x.png        
-                ├── b.png
-                └── b@2x.png
-        └── js/
-            └── base.js
-    ├── package.json
-    ├── Gruntfile.js
-</code></pre>
-<h3 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>文件命名</h3>
+<li>下载<a href="http://www.mongodb.org/downloads">mongo</a></li>
+<li>设置MongoDB目录<ul>
+<li>将其解压到 <code>d:\</code></li>
+<li>再重命名为<code>mongodb</code>，路径为<code>d:\mongodb</code></li>
+</ul>
+</li>
+<li>设置数据文件路径<ul>
+<li>在<code>d</code>盘建一个<code>data</code>文件夹</li>
+<li>在<code>data</code>文件夹中新建<code>db</code>文件夹，路径<code>d:\data\db</code></li>
+</ul>
+</li>
+<li>
+<p>启动MongoDB服务。进入<code>cmd</code>提示符控制台，</p>
+<pre><code>cd d:\mongodb\bin\
+mongod.exe &ndash;dbpath=d:\data\db</code></pre>
+</li>
+<li>
+<p>将MongoDB作为 Windows 服务随机启动</p>
 <ul>
-<li>css文件<ul>
-<li>需要sass编译的文件后缀名为<strong>.scss</strong></li>
-<li>需要sprite合并的文件后缀名为<strong>.sprite.css</strong></li>
-<li>同时需要sass编译和sprite合并的后缀名为<strong>.tosprite.scss</strong></li>
-<li>其他后缀名为<strong>.css</strong></li>
-</ul>
-</li>
-<li>图片<ul>
-<li>高清图末尾需要&rdquo;@2x&rdquo;, eg. a@2x.png</li>
-</ul>
-</li>
-<li>js<ul>
-<li>正常命名</li>
-</ul>
-</li>
-</ul>
-<h3 id="grunt_1"><a name="user-content-grunt_1" href="#grunt_1" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>开始grunt</h3>
-<ol>
+<li>创建D:\mongodb\logs\mongodb.log文件，用于存储MongoDB的日志文件, </li>
 <li>
-<p>打开<code>pageage.json</code>,修改<code>client.root</code>为工作项目文件夹名字</p>
-<pre><code>&ldquo;client&rdquo;: {
-    &ldquo;root&rdquo;: &ldquo;gruntdemo&rdquo;
-}</code></pre>
-</li>
-<li>
-<p>进入<code>Gruntfile.js</code>所在目录，然后<code>$ cd static</code></p>
-</li>
-<li>
-<p>sass编译<code>$ grunt sassc</code>, css文件夹的目录变为</p>
-<pre><code>├── static
-    ├── gruntdemo/                
-        ├── css/    
-            ├── test_scss_nosprite.scss
-            ├── test_scss_nosprite.sass.css
-            ├── test_scss_sprite.tosprite.scss
-            ├── test_scss_sprite.tosprite.sprite.sass.css    
-            └── testcss.sprite.css 
-        ├── images/    
-            ├── slice/    
-                ├── a.png
-                ├── a@2x.png        
-                ├── b.png
-                └── b@2x.png
-        └── js/
-            └── base.js
-    ├── package.json
-    ├── Gruntfile.js
+<p>安装系统服务：</p>
+<pre><code> cd d:\mongodb\bin 
+ mongod &ndash;dbpath=d:\data\db &ndash;logpath=d:\mongodb\logs\mongodb.log &ndash;install</code></pre>
+<blockquote>
+<p>all output going to: d:\mongodb\logs\mongodb.log<br />
+ Creating service MongoDB.<br />
+ Service creation successful.<br />
+Service can be started from the command line via &lsquo;net start &ldquo;MongoDB&rdquo;&rsquo;. </p>
+</blockquote>
+<pre><code>net start mongodb
 </code></pre>
-<p><strong>编译后的文件会带有后缀名<code>.sass.css</code>, 表示为临时文件，方便使用删除命令</strong></p>
+<blockquote>
+<p>Mongo DB 服务已经启动成功。  </p>
+</blockquote>
 </li>
-<li>
-<p>css sprite，使用<code>$ grunt isprite</code>, 生成后目录为</p>
-<pre><code>├── static
-    ├── gruntdemo/                
-        ├── css/    
-            ├── test_scss_nosprite.scss
-            ├── test_scss_nosprite.sass.css
-            ├── test_scss_sprite.tosprite.scss
-            ├── test_scss_sprite.tosprite.sprite.sass.css  
-            ├── test_scss_sprite.tosprite.sprite.build.css    
-            ├── testcss.sprite.css
-            └── testcss.sprited.build.css 
-        ├── images/    
-            ├── slice/    
-                ├── a.png
-                ├── a@2x.png        
-                ├── b.png
-                └── b@2x.png
-            ├── sprited/    
-                ├── test_scss_sprite.sprite.sass.png
-                ├── test_scss_sprite.sprite.sass@2x.png    
-                ├── testcss.sprite.png
-                └── testcss.sprite@2x.png
-        └── js/
-            └── base.js
-    ├── package.json
-    ├── Gruntfile.js
+</ul>
+</li>
+</ol>
+<h2 id="mongo-shell"><a name="user-content-mongo-shell" href="#mongo-shell" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>mongo shell</h2>
+<p><strong>mongodb的shell其实就是javascript</strong></p>
+<pre><code>&gt; show dbs 显示所有的数据库
+&gt; use dbname 切换数据库，如果数据库不存在就直接创建
+&gt; show collections 显示当前数据库下的集合
+&gt; db.[collectionname].find() 读集合数据
+&gt; db.dropDatabase()  删除当前数据库
+&gt; db.[collection].insert(BSON)   增加
+&gt; db.[collection].find()   查找
+&gt; db.[collection].count() 取得记录数量
+&gt; db.[collection].update(condition, update document) 修改
+&gt; db.[collection].remove(condition) 删除，这是一个不可撤回的操作，如果不带参数将清空整个集合，操作时务必加上查询条件
 </code></pre>
-<p><strong>生成后的文件会带有后缀名<code>.build.css</code>, 表示为临时文件，方便使用删除命令。同时此时生成的文件为最终文件，可以重命名。sprited为最终合成的图片所在的目录。</strong></p>
-<p><strong>建议： 如果开发完成将文件名中的build去除即可。</strong></p>
-</li>
-<li>
-<p>第3,4步可以合成一个，使用<code>$ grunt cssop</code></p>
-</li>
-<li>
-<p>压缩js, 使用<code>$ grunt jsminify</code></p>
-<pre><code>└── js/
-    ├── base.build.min.js
-    └── base.js
-</code></pre>
-<p><strong>建议： 如果开发完成将文件名中的build去除即可</strong>   </p>
-</li>
-<li>
-<p>删除临时文件<code>$ grunt cleanup</code>, 会删除临时生成的文件。</p>
-</li>
-<li>
-<p>所有的目录都可以在<code>Gruntfile.js</code>修改。</p>
-</li>
-</ol></article></body></html>
+<h2 id="gui"><a name="user-content-gui" href="#gui" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>gui管理工具</h2>
+<p>推荐<a href="http://www.robomongo.org/">robomongo</a></p></article></body></html>
