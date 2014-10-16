@@ -127,3 +127,5 @@
 7. 删除临时文件`$ grunt cleanup`, 会删除临时生成的文件。
 
 8. 所有的目录都可以在`Gruntfile.js`修改。
+
+9. [demo](https://github.com/glenzhang/grunt) 
