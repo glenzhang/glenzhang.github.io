@@ -1066,4 +1066,46 @@ body .markdown-body
     }
 });</code></pre>
 </li>
-</ol></article></body></html>
+<li>
+<p>font-face字体下载需要跨域</p>
+</li>
+</ol>
+<blockquote>
+<p>当静态资源服务器和当前访问站点不在同域时，用chrome手机模拟器无法下载字体</p>
+</blockquote>
+<p><strong>解决方案：</strong> 在静态资源服务器设置跨域头，以apache为例，<a href="http://stackoverflow.com/questions/8245464/cross-domain-font-face-issues">参考</a>。在Apache httpd.conf增加</p>
+<pre><code>    &lt;FilesMatch &ldquo;\.(ttf|otf|eot|woff)$&rdquo;&gt;
+        &lt;IfModule mod_headers.c&gt;
+            Header set Access-Control-Allow-Origin &ldquo;http://m.51fanli.com&rdquo;
+        &lt;/IfModule&gt;
+    &lt;/FilesMatch&gt;</code></pre>
+<h1 id="tips"><a name="user-content-tips" href="#tips" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>tips</h1>
+<ul>
+<li>用-webkit-tap-highlight-color代替a:active</li>
+<li>用tap事件代替click, 移动浏览器上click会延时300ms</li>
+<li>css3动画替换JS动画</li>
+<li>css3动画闪烁解决方案 -webkit-transform-style:preserve-3d; -webkit-backface-visibility:hidden;</li>
+<li>将css3动画属性style到元素，以加快解析执行</li>
+<li>用手机自带浏览器访问某页面如： <a href="http://m.51fanli.com">http://m.51fanli.com</a>, 然后再用app打开这个页面，session是公用的。</li>
+<li>典型的web app head部分<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;site title&lt;/title&gt;
+        &lt;meta charset=&rdquo;utf-8&rdquo;&gt;
+        &lt;meta name=&rdquo;viewport&rdquo; content=&rdquo;width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0&rdquo;&gt;
+        &lt;meta name=&rdquo;apple-mobile-web-app-capable&rdquo; content=&rdquo;yes&rdquo;/&gt;
+        &lt;meta name=&rdquo;apple-mobile-web-app-capable&rdquo; content=&rdquo;yes&rdquo;/&gt;
+        &lt;meta name=&rdquo;format-detection&rdquo; content=&rdquo;telephone=no&rdquo;&gt;
+        &lt;meta name=&rdquo;format-detection&rdquo; content=&rdquo;address=no&rdquo;&gt;
+        &lt;meta name=&rdquo;format-detection&rdquo; content=&rdquo;email=no&rdquo;&gt;
+        &lt;meta http-equiv=&rdquo;x-dns-prefetch-control&rdquo; content=&rdquo;on&rdquo; /&gt;
+        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l0.51fanli.net&rdquo;&gt;
+        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l1.51fanli.net&rdquo;&gt;
+        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l2.51fanli.net&rdquo;&gt;
+        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l3.51fanli.net&rdquo;&gt;
+        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l4.51fanli.net&rdquo;&gt;
+        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//static2.51fanli.net&rdquo;&gt;
+        &lt;link rel=&rdquo;apple-touch-icon-precomposed&rdquo; size=&rdquo;114x114&rdquo; href=&rdquo;http://static2.51fanli.net/common/images/webapp/dockicon.png&rdquo;/&gt;
+  &lt;/head&gt;</code></pre>
+</li>
+</ul></article></body></html>

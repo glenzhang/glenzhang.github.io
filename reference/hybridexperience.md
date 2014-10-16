@@ -63,3 +63,47 @@
     		}
 		});
 
+2. font-face字体下载需要跨域
+   
+   > 当静态资源服务器和当前访问站点不在同域时，用chrome手机模拟器无法下载字体
+   
+   **解决方案：** 在静态资源服务器设置跨域头，以apache为例，[参考](http://stackoverflow.com/questions/8245464/cross-domain-font-face-issues)。在Apache httpd.conf增加
+
+		<FilesMatch "\.(ttf|otf|eot|woff)$">
+    		<IfModule mod_headers.c>
+         		Header set Access-Control-Allow-Origin "http://m.51fanli.com"
+    		</IfModule>
+		</FilesMatch>
+
+#tips
+* 用-webkit-tap-highlight-color代替a:active
+* 用tap事件代替click, 移动浏览器上click会延时300ms
+* css3动画替换JS动画
+* css3动画闪烁解决方案 -webkit-transform-style:preserve-3d; -webkit-backface-visibility:hidden;
+* 将css3动画属性style到元素，以加快解析执行
+* 用手机自带浏览器访问某页面如： http://m.51fanli.com, 然后再用app打开这个页面，session是公用的。
+* 典型的web app head部分
+		
+		<!doctype html>
+		<html>
+			<head>
+    			<title>site title</title>
+    			<meta charset="utf-8">
+    			<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    			<meta name="apple-mobile-web-app-capable" content="yes"/>
+    			<meta name="apple-mobile-web-app-capable" content="yes"/>
+    			<meta name="format-detection" content="telephone=no">
+    			<meta name="format-detection" content="address=no">
+    			<meta name="format-detection" content="email=no">
+    			<meta http-equiv="x-dns-prefetch-control" content="on" />
+    			<link rel="dns-prefetch" href="//l0.51fanli.net">
+    			<link rel="dns-prefetch" href="//l1.51fanli.net">
+    			<link rel="dns-prefetch" href="//l2.51fanli.net">
+    			<link rel="dns-prefetch" href="//l3.51fanli.net">
+    			<link rel="dns-prefetch" href="//l4.51fanli.net">
+    			<link rel="dns-prefetch" href="//static2.51fanli.net">
+    			<link rel="apple-touch-icon-precomposed" size="114x114" href="http://static2.51fanli.net/common/images/webapp/dockicon.png"/>
+		  </head>
+
+
+
