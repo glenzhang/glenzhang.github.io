@@ -1003,19 +1003,17 @@ body .markdown-body
 <ol>
 <li>
 <p>红米手机-圆角外背景色溢出</p>
-<blockquote>
-<p>对元素设置圆角及背景色 border-radius:50px;background-color:#000; 四个圆角外会溢出背景色</p>
-</blockquote>
+<p><em>对元素设置圆角及背景色 border-radius:50px;background-color:#000; 四个圆角外会溢出背景色</em></p>
 <p><strong>解决方案：</strong>增加样式<code>background-clip:padding-box;</code><a href="http://blog.csdn.net/luochao_tj/article/details/21469017">参考</a></p>
 </li>
 <li>
-<p>小米1s手机-android2.3以下<code>fixed+transform</code>无效<br />
-    &gt; 对fixed元素使用transform,沿着y轴-100%隐藏，等待触发时机。</p>
+<p>小米1s手机-android2.3以下<code>fixed+transform</code>无效</p>
+<p><em>对fixed元素使用transform,沿着y轴-100%隐藏，等待触发时机</em></p>
 <p><strong>解决方案：</strong>先将元素隐藏，在触发之前动画之前显示，有动画效果的可以见到，无动画效果的直接显示。</p>
 </li>
 <li>
-<p>魅族手机-gmu1.0, 2.0 dialog widget导致样式破坏<br />
-    &gt; 场景:dialog widget容器外宽度无效。</p>
+<p>魅族手机-gmu1.0, 2.0 dialog widget导致样式破坏</p>
+<p><em>dialog widget容器外宽度无效</em></p>
 <p><strong>解决方案：</strong>css改变容器<code>min-width</code></p>
 </li>
 </ol>
@@ -1023,9 +1021,7 @@ body .markdown-body
 <ol>
 <li>
 <p>软键盘调出后隐藏，一些fixed元素布局呈现到奇怪的位置</p>
-<blockquote>
-<p>调出软键盘后，点击取消，页面隐藏的fixed元素浮出</p>
-</blockquote>
+<p><em>调出软键盘后，点击取消，页面隐藏的fixed元素浮出</em></p>
 <p><strong>解决方案：</strong>调用scrollTo重绘页面</p>
 <pre><code>setTimeout(function() {
     window.scrollTo(document.body.scrollLeft, document.body.scrollTop);
@@ -1039,9 +1035,7 @@ body .markdown-body
 <ol>
 <li>
 <p>iScroll横向滚动区域无法拉动页面</p>
-<blockquote>
-<p>在设定wrapper为横向滚动时，如果你手指放在该区域，将无法拉动页面</p>
-</blockquote>
+<p><em>在设定wrapper为横向滚动时，如果你手指放在该区域，将无法拉动页面</em></p>
 <p><strong>解决方案：</strong><a href="http://www.chengxuyuans.com/javascript/66459.html">参考</a></p>
 <pre><code>myScroll = new iScroll(&lsquo;scrollpanel&rsquo;, {
     // other options go here&hellip;
@@ -1068,17 +1062,15 @@ body .markdown-body
 </li>
 <li>
 <p>font-face字体下载需要跨域</p>
+<p><em>当静态资源服务器和当前访问站点不在同域时，用chrome手机模拟器无法下载字体</em></p>
+<p><strong>解决方案：</strong> 在静态资源服务器设置跨域头，以apache为例，<a href="http://stackoverflow.com/questions/8245464/cross-domain-font-face-issues">参考</a>。在Apache httpd.conf增加</p>
+<pre><code>&lt;FilesMatch &ldquo;\.(ttf|otf|eot|woff)$&rdquo;&gt;
+    &lt;IfModule mod_headers.c&gt;
+        Header set Access-Control-Allow-Origin &ldquo;http://m.51fanli.com&rdquo;
+    &lt;/IfModule&gt;
+&lt;/FilesMatch&gt;</code></pre>
 </li>
 </ol>
-<blockquote>
-<p>当静态资源服务器和当前访问站点不在同域时，用chrome手机模拟器无法下载字体</p>
-</blockquote>
-<p><strong>解决方案：</strong> 在静态资源服务器设置跨域头，以apache为例，<a href="http://stackoverflow.com/questions/8245464/cross-domain-font-face-issues">参考</a>。在Apache httpd.conf增加</p>
-<pre><code>    &lt;FilesMatch &ldquo;\.(ttf|otf|eot|woff)$&rdquo;&gt;
-        &lt;IfModule mod_headers.c&gt;
-            Header set Access-Control-Allow-Origin &ldquo;http://m.51fanli.com&rdquo;
-        &lt;/IfModule&gt;
-    &lt;/FilesMatch&gt;</code></pre>
 <h1 id="tips"><a name="user-content-tips" href="#tips" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>tips</h1>
 <ul>
 <li>用-webkit-tap-highlight-color代替a:active</li>
@@ -1087,7 +1079,9 @@ body .markdown-body
 <li>css3动画闪烁解决方案 -webkit-transform-style:preserve-3d; -webkit-backface-visibility:hidden;</li>
 <li>将css3动画属性style到元素，以加快解析执行</li>
 <li>用手机自带浏览器访问某页面如： <a href="http://m.51fanli.com">http://m.51fanli.com</a>, 然后再用app打开这个页面，session是公用的。</li>
-<li>典型的web app head部分<pre><code>&lt;!doctype html&gt;
+<li>
+<p>典型的web app head部分</p>
+<pre><code>&lt;!doctype html&gt;
 &lt;html&gt;
     &lt;head&gt;
         &lt;title&gt;site title&lt;/title&gt;
@@ -1107,5 +1101,8 @@ body .markdown-body
         &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//static2.51fanli.net&rdquo;&gt;
         &lt;link rel=&rdquo;apple-touch-icon-precomposed&rdquo; size=&rdquo;114x114&rdquo; href=&rdquo;http://static2.51fanli.net/common/images/webapp/dockicon.png&rdquo;/&gt;
   &lt;/head&gt;</code></pre>
+</li>
+<li>
+<p>MORE TO BE ADDED</p>
 </li>
 </ul></article></body></html>
