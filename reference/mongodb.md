@@ -15,18 +15,14 @@
 
 5. 将MongoDB作为 Windows 服务随机启动
 	*  创建D:\mongodb\logs\mongodb.log文件，用于存储MongoDB的日志文件, 
-	*  安装系统服务：
+	*  安装windows服务：
 	
 			 cd d:\mongodb\bin 
-			 mongod --dbpath=d:\data\db --logpath=d:\mongodb\logs\mongodb.log --install   
-			 
-		>all output going to: d:\mongodb\logs\mongodb.log  
-		 Creating service MongoDB.  
-		 Service creation successful.  
-		>Service can be started from the command line via 'net start "MongoDB"'. 
+			 mongod --dbpath=d:\data\db --logpath=d:\mongodb\logs\mongodb.log --install
+		*Service can be started from the command line via 'net start "MongoDB"'.*
 		
 		 	net start mongodb 
-		>Mongo DB 服务已经启动成功。  
+		*Mongo DB 服务已经启动成功*
  
 
 ## mongo shell

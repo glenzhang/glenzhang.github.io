@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
-  width: 80em;
+  width: 45em;
   border: 1px solid #ddd;
   outline: 1300px solid #fff;
   margin: 16px auto;
@@ -1022,21 +1022,12 @@ mongod.exe &ndash;dbpath=d:\data\db</code></pre>
 <p>将MongoDB作为 Windows 服务随机启动</p>
 <ul>
 <li>创建D:\mongodb\logs\mongodb.log文件，用于存储MongoDB的日志文件, </li>
-<li>
-<p>安装系统服务：</p>
-<pre><code> cd d:\mongodb\bin 
+<li>安装windows服务：<pre><code> cd d:\mongodb\bin 
  mongod &ndash;dbpath=d:\data\db &ndash;logpath=d:\mongodb\logs\mongodb.log &ndash;install</code></pre>
-<blockquote>
-<p>all output going to: d:\mongodb\logs\mongodb.log<br />
- Creating service MongoDB.<br />
- Service creation successful.<br />
-Service can be started from the command line via &lsquo;net start &ldquo;MongoDB&rdquo;&rsquo;. </p>
-</blockquote>
+<p><em>Service can be started from the command line via &lsquo;net start &ldquo;MongoDB&rdquo;&rsquo;.</em></p>
 <pre><code>net start mongodb
 </code></pre>
-<blockquote>
-<p>Mongo DB 服务已经启动成功。  </p>
-</blockquote>
+<p><em>Mongo DB 服务已经启动成功</em></p>
 </li>
 </ul>
 </li>
