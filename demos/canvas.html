@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>canvas</title>
+    <meta charset='utf-8' />
+</head>
+
+<body>
+    <canvas height='560' width='1000' id='canvas'>您的浏览器不支持canvas！</canvas>
+    <script>
+    var canvas = document.getElementById('canvas');
+
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'rgba(0,0,0,.08)';
+    ctx.lineWidth = 5;
+    ctx.lineJoin = 'round';
+
+    //全局变量
+    var starx = Math.random() * canvas.width;
+    var stary = Math.random() * canvas.height;
+
+    function re() {
+        setInterval(render, 30);
+    }
+
+    //int
+    function int() {
+        //setInterval(render,30);
+        ctx.beginPath(); // 开始路径绘制
+        ctx.moveTo(0, 0); // 设置路径起点，坐标为(20,20)
+        ctx.lineTo(0, 200); // 绘制一条到(200,20)的直线
+        ctx.lineTo(200, 200); // 绘制一条到(200,120)的直线
+        ctx.closePath();
+        ctx.lineWidth = 1.0; // 设置线宽
+        ctx.strokeStyle = "#CC0000"; // 设置线的颜色
+        ctx.stroke(); // 进行线的着色，这时整条线才变得可见
+
+        ctx.beginPath();
+        ctx.fillStyle = "yellow"; // 设置填充色
+        ctx.fillRect(50, 50, 200, 100); //绘制矩形
+
+        ctx.beginPath();
+        ctx.strokeRect(50, 50, 200, 100); // 绘制空心矩形
+        ctx.clearRect(100, 50, 50, 50); // 清除矩形区域内容
+
+        ctx.beginPath();
+        ctx.font = "Bold 20px Arial"; // 设置字体
+        ctx.textAlign = "left"; // 设置对齐方式
+        ctx.fillStyle = "#008600"; // 设置填充颜色
+        ctx.fillText("Youmi", 10, 50); // 设置字体内容，以及在画布上的位置
+        ctx.strokeText("Youmi", 10, 100); // 绘制空心字
+        /*filltext不支持文本断行，即所有文本出现在一行内。如果要生成多行文本，只有调用多次fillText方法*/
+        ctx.beginPath();
+        ctx.fillText("Lily", 10, 150);
+        ctx.strokeText("Lily", 10, 200);
+
+        /*arc方法的x和y参数是圆心坐标，
+            radius是半径，
+            startAngle和endAngle则是扇形的起始角度和终止角度（以弧度表示），
+            anticlockwise表示做图时应该逆时针画（true）还是顺时针画（false）, 默认false
+        */
+        ctx.beginPath();
+        ctx.arc(260, 260, 50, 0, Math.PI * 5, false);
+        ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(260, 60, 50, 0, Math.PI * 2, true);
+        ctx.lineWidth = 10.0;
+        ctx.strokeStyle = "#c60";
+        ctx.stroke();
+
+        // 渐变+阴影
+        ctx.beginPath();
+        var myGradient = ctx.createLinearGradient(0, 0, 0, 160);
+        myGradient.addColorStop(0, "#bababa");
+        myGradient.addColorStop(1, "#636363");
+
+        ctx.shadowOffsetX = 10; // 设置水平位移
+        ctx.shadowOffsetY = 10; // 设置垂直位移
+        ctx.shadowBlur = 10; // 设置模糊度
+        ctx.shadowColor = "rgba(0,0,0,0.5)"; // 设置阴影颜色
+
+        ctx.fillStyle = myGradient;
+        ctx.fillRect(10, 10, 200, 100);
+
+        // save方法用于保存上下文环境，restore方法用于恢复到上一次保存的上下文环境
+        ctx.save();
+        ctx.shadowOffsetX = 10;
+        ctx.shadowOffsetY = 10;
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = "rgba(0,0,0,0.5)";
+
+        ctx.fillStyle = "#CC0000";
+        ctx.fillRect(10, 10, 150, 100);
+
+        ctx.restore();
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(180, 10, 150, 100);
+
+        // 清空当前所有已绘制图形
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        var timer;
+        var p = 0;
+        var previousAngle = 0;
+
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
+        ctx.shadowBlur = 0;
+
+        ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+
+        timer = setInterval(function() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (p >= 175) {
+                clearInterval(timer);
+                setTimeout(function() {
+                    callbackcircle();
+                }, 280);
+            }
+
+            p += 5;
+            ctx.arc(260, 160, 100, 0, Math.PI * p / 180, false);
+            ctx.fill();
+
+        }, 10);
+    }
+
+
+
+    function callbackcircle() {
+
+        ctx.beginPath();
+        ctx.arc(260, 160, 100, Math.PI * 190 / 180, Math.PI * 270 / 180, false);
+        ctx.lineWidth = 1.0;
+        ctx.fillStyle = "yellow";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(260, 160, 100, Math.PI * 280 / 180, Math.PI * 350 / 180, false);
+        ctx.lineWidth = 1.0;
+        ctx.fillStyle = "#c60";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(220, 120, 15, 0, Math.PI * 2, false);
+        ctx.fillStyle = "#000";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(220, 120, 15, 0, Math.PI * 2, false);
+        ctx.fillStyle = "#000";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(300, 120, 15, 0, Math.PI * 2, false);
+        ctx.fillStyle = "#000";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(260, 200, 30, 0, Math.PI, false);
+        ctx.fillStyle = "#fff";
+        ctx.fill();
+
+    }
+
+    function draw() {
+        var img = new Image();
+        img.onload = function() {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+        };
+        img.src = "http://images.cnblogs.com/cnblogs_com/html5test/359114/r_test.jpg";
+    }
+
+    function animate() {
+        var posX = 20,
+            posY = 100;
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        setInterval(function() {
+            posX += 1;
+            posY += 0.25;
+
+            ctx.beginPath();
+            ctx.fillStyle = "white";
+
+            ctx.arc(posX, posY, 10, 0, Math.PI * 2, false);
+            ctx.closePath();
+
+            ctx.fill();
+
+        }, 30);
+    }
+
+    //render
+    function render() {
+            ctx.beginPath();
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.moveTo(starx, stary);
+            starx = Math.random() * canvas.width;
+            stary = Math.random() * canvas.height;
+            ctx.bezierCurveTo(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * canvas.width, Math.random() * canvas.height, starx, stary);
+            var r = Math.round(Math.random() * 255);
+            var g = Math.round(Math.random() * 255);
+            var b = Math.round(Math.random() * 255);
+            ctx.strokeStyle = 'rgba(' + r + ',' + g + ',' + b + ',1)';
+            ctx.stroke();
+        }
+        //onload=int
+    window.onload = int;
+    </script>
+</body>
+
+</html>
