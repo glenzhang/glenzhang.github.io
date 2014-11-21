@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<title>返利网前端-背景透明，内容不透明CSS代码生成器</title>
+<link href="http://static2.51fanli.net/common/css/base.css" type="text/css" rel="stylesheet" />
+<link href="http://static2.51fanli.net/common/css/ui/button.css" type="text/css" rel="stylesheet" />
+</head>
+<body class="yahei">
+	<style>
+	.container{width:1100px; padding:50px 0;}
+	h1{display:block; padding-bottom:10px; font-size:20px; line-height:30px;}
+	h2{display:block; padding-bottom:20px; margin-bottom:20px; border-bottom:1px dotted #FFD800;}
+	.notice{margin-bottom:30px;}
+	.form-wrap{position:relative; padding:20px 20px 5px; background:#F4F4F4;}
+	.form-row{margin-bottom:15px;}
+	.form-row label{float:left; width:70px; height:30px; line-height:30px; font-size:16px; color:#333;}
+	.form-row input[type='text']{float:left; padding:0 5px; height:28px; border:1px solid #CCC; font-size:16px; color:#333;}
+	.form-row span{float:left; display:block; height:30px; margin-left:10px; line-height:30px; color:#999;}
+	.form-row span em{font-weight:bold; color:#F60;}
+	.bottom-arrow{position:absolute; left:140px; bottom:-16px; width:0; height:0; overflow:hidden; font-size:0; line-height:0; border-width:8px; border-style:solid; border-color:#F4F4F4 #272822 #272822;}
+	.code-wrap{height:50px; padding:30px 15px; border:0; font-size:16px; line-height:22px; font-family:Consolas; color:#FFF; background:#272822;}
+	.code-wrap .b{color:#66D9EF;}
+	.code-wrap .z{color:#AE81FF;}
+	.error-tips{padding-left:10px; line-height:50px; font-weight:normal; font-family:'Microsoft YaHei'; font-size:30px; color:#FFD800;}
+	textarea{height:1px; width:1px; overflow:hidden; border:0;}
+	</style>
+
+	<div class="container yahei">
+		
+		<h1>返利网前端-背景透明，内容不透明CSS代码生成器</h1>
+		<h2 class="nine">说明：为页面元素添加背景透明，内容不透明的效果，兼容IE6/7/8/9/10、Chrome、Firefox、Safari、Opera。</h2>
+
+		<div class="form-wrap">
+			<div class="form-row clearfix">
+				<label for="J_selector_input">选择器：</label>
+				<input id="J_selector_input" name="selector" type="text" />
+				<span>CSS选择器，<em>如：.selector</em></span>
+			</div>
+			<div class="form-row clearfix">
+				<label for="J_color_input">颜色值：</label>
+				<input id="J_color_input" name="selector" type="text" maxlength="6" />
+				<span>16进制颜色值，不带#号，支持简写，<em>如：#F60</em>，请填：<em>F60</em></span>
+			</div>
+			<div class="form-row clearfix">
+				<label for="J_opacity_input">透明度：</label>
+				<input id="J_opacity_input" name="selector" type="text" />
+				<span>0到1之间，<em>如：0.5</em></span>
+			</div>
+			<div class="form-row">
+				<label>&nbsp;</label>
+				<button id="J_check_btn" class="btn btn-m btn-orange">生成代码</button>
+				<button id="J_copy_btn" class="btn btn-m btn-green" data-field="#J_code_box">复制代码</button>
+			</div>
+			<i class="bottom-arrow"></i>
+		</div>
+
+		<div id="J_code_box" class="code-wrap"></div>
+
+		<textarea id="J_textarea">dddd</textarea>
+
+	</div>
+	
+	<script src="http://static2.51fanli.net/common/libs/jquery/jquery.min.js"></script>
+	<script src="http://static2.51fanli.net/common/js/base.js"></script>
+	<script src="http://static2.51fanli.net/common/plugins/zclip/jquery.zclip-min.js"></script>
+	<script src="http://static2.51fanli.net/common/plugins/formplus/jquery.formplus-min.js"></script>
+	<script>
+
+		setup();
+
+		function setup()
+		{
+			bindEvents();
+		}
+
+		function bindEvents()
+		{
+			$("#J_check_btn").on("click", function ()
+			{
+				var $selectorInput = $("#J_selector_input");
+				var $colorInput = $("#J_color_input");
+				var $opacityInput = $("#J_opacity_input");
+				var opaStr = (parseInt($opacityInput.val() * 255)).toString(16);
+
+				buildCodeHtml($selectorInput.val(), $colorInput.val().toUpperCase(), $opacityInput.val(), opaStr.toUpperCase());
+			});
+
+			$("#J_copy_btn").clipboard({
+				onComplete: function ()
+				{
+					$("#J_copy_btn").text("复制成功");
+				}
+			});
+		}
+
+		function buildCodeHtml(selector, color, opacity, opaStr)
+		{
+			var html = new StringBuilder();
+			var vale = new StringBuilder();
+
+			if (selector == "" && color == "" && opacity == "")
+			{
+				html.append("<span class='error-tips'>你想干嘛？</span>");
+			}
+			else if (($.trim(color).length != 3 && $.trim(color).length != 6) || color.indexOf("#") >= 0)
+			{
+				html.append("<span class='error-tips'>颜色值不正确！</span>");
+			}
+			else if (opacity > 1 || opacity < 0)
+			{
+				html.append("<span class='error-tips'>透明度不正确！</span>");
+			}
+			else
+			{
+				//var newColor = color.length == 3 ? color.replace(/^([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])$/, '$1$1$2$2$3$3') : color;
+				var newColor = color.length == 3 ? color.replace(/[0-9a-fA-F]/g, function (w) { return w + w }) : color;
+				var R = parseInt(newColor.substring(0, 2), 16), G = parseInt(newColor.substring(2, 4), 16), B = parseInt(newColor.substring(4), 16);
+
+				html.append("{0}{".format(selector))
+					.append("<i class='b'>background</i>:rgba(<i class='z'>{0}, {1}, {2}, {3}</i>);".format(R, G, B, opacity))
+					.append("}<br />")
+					.append(".no-rgba {0}{".format(selector))
+					.append("<i class='b'>filter</i>:progid:DXImageTransform.Microsoft.gradient(startColorstr=<i class='z'>#{0}{1}</i>, endColorstr=<i class='z'>#{0}{1}</i>);".format(opaStr, newColor))
+					.append("}");
+
+				vale.append("{0}{".format(selector))
+					.append("background:rgba({0}, {1}, {2}, {3}); ".format(R, G, B, opacity))
+					.append("}\n")
+					.append(".no-rgba {0}{".format(selector))
+					.append("filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{0}{1}, endColorstr=#{0}{1});".format(opaStr, newColor))
+					.append("}");;
+			}
+
+			$("#J_code_box").html(html.toString());
+			$("#J_textarea").val(vale.toString());
+		}
+
+	</script>
+
+
+</body>
+</html>
