@@ -21,8 +21,6 @@ ol, ul{list-style:none;}
 
 /* grid.css */
 .container{width:960px;margin:0 auto;text-align:left;}
-#exposeMask{background-color:rgba(0,0,0,0.5);}
-.no-rgba #exposeMask{filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#7F000000', endColorstr='#7F000000');}
 
 /*typography.css*/
 body{font:12px "\5B8B\4F53",sans-serif;}

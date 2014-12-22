@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>h5 layout</title>
@@ -10,93 +11,111 @@
     <meta name="format-detection" content="address=no">
     <meta name="format-detection" content="email=no">
     <meta http-equiv="x-dns-prefetch-control" content="on" />
-    <link rel="dns-prefetch" href="//static2.51fanli.net" />
-    <link rel="stylesheet" href="http://static2.51fanli.net/webapp/css/base.css" />
-    
-    <style type="text/css">  
-        *{margin:0;}
-        .box{margin-bottom: 15px;}
-        .box h3{margin: 10px 0; color:#666; font-size: 20px; font-weight: bold;}
-        .x-grid{display: -webkit-box; -webkit-box-sizing:border-box;}
-        .x-span0{-webkit-box-flex:0;}
-        .x-span1{-webkit-box-flex:1;}
-        .x-span2{-webkit-box-flex:2;}
-        .x-span3{-webkit-box-flex:3;}
+    <link rel="stylesheet" href="../static/common/css/base.css">
+
+    <style type="text/css">
+    .box {
+        margin-bottom: 15px;
+    }
+    .box h3 {
+        margin: 10px 0;
+        color: #666;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .x-grid {
+        display: -webkit-box;
+        -webkit-box-sizing: border-box;
+    }
+    .x-span0 {
+        -webkit-box-flex: 0;
+    }
+    .x-span1 {
+        -webkit-box-flex: 1;
+    }
+    .x-span2 {
+        -webkit-box-flex: 2;
+    }
+    .x-span3 {
+        -webkit-box-flex: 3;
+    }
     </style>
 
 </head>
+
 <body>
 
-<section class="box">
-    <h3>2列-前列占后列剩下的全部空间</h3>
-    <section class="x-grid">
-        <article style="background-color:#fea;" class="x-span1">1</article>
-        <article style="background-color:#f60;" class="x-span0">2</article>
+    <section class="box">
+        <h3>2列-前列占后列剩下的全部空间</h3>
+        <section class="x-grid">
+            <article style="background-color:#fea;" class="x-span1">1</article>
+            <article style="background-color:#f60;" class="x-span0">2</article>
+        </section>
     </section>
-</section>
 
-<section class="box">
-    <h3>2列-后列占前列剩下的全部空间</h3>
-    <section class="x-grid">
-        <article style="background-color:#fea;" class="x-span0">1</article>
-        <article style="background-color:#f60;" class="x-span1">2</article>
+    <section class="box">
+        <h3>2列-后列占前列剩下的全部空间</h3>
+        <section class="x-grid">
+            <article style="background-color:#fea;" class="x-span0">1</article>
+            <article style="background-color:#f60;" class="x-span1">2</article>
+        </section>
     </section>
-</section>
 
-<section class="box">
-    <h3>2列等分</h3>
-    <section class="x-grid">
-        <article style="background-color:#fea;" class="x-span1">1</article>
-        <article style="background-color:#f60;" class="x-span1">2</article>
+    <section class="box">
+        <h3>2列等分</h3>
+        <section class="x-grid">
+            <article style="background-color:#fea;" class="x-span1">1</article>
+            <article style="background-color:#f60;" class="x-span1">2</article>
+        </section>
     </section>
-</section>
 
-<section class="box">
-    <h3>3列-中间列占前后列剩下的全部空间</h3>
-    <section class="x-grid">
-        <article style="background-color:#a60;" class="x-span0">1</article>
-        <article style="background-color:#fea;" class="x-span1">2</article>
-        <article style="background-color:#f60;" class="x-span0">3</article>
-    </section> 
-</section>
+    <section class="box">
+        <h3>3列-中间列占前后列剩下的全部空间</h3>
+        <section class="x-grid">
+            <article style="background-color:#a60;" class="x-span0">1</article>
+            <article style="background-color:#fea;" class="x-span1">2</article>
+            <article style="background-color:#f60;" class="x-span0">3</article>
+        </section>
+    </section>
 
-<section class="box">
-    <h3>3列-前列占中后列剩下的全部空间</h3>
-    <section class="x-grid">
-        <article style="background-color:#a60;" class="x-span1">1</article>
-        <article style="background-color:#fea;" class="x-span0">2</article>
-        <article style="background-color:#f60;" class="x-span0">3</article>
-    </section> 
-</section>
+    <section class="box">
+        <h3>3列-前列占中后列剩下的全部空间</h3>
+        <section class="x-grid">
+            <article style="background-color:#a60;" class="x-span1">1</article>
+            <article style="background-color:#fea;" class="x-span0">2</article>
+            <article style="background-color:#f60;" class="x-span0">3</article>
+        </section>
+    </section>
 
-<section class="box">
-    <h3>3列-后列占前中列剩下的全部空间</h3>
-    <section class="x-grid">
-        <article style="background-color:#a60;" class="x-span1">1</article>
-        <article style="background-color:#fea;" class="x-span0">2</article>
-        <article style="background-color:#f60;" class="x-span0">3</article>
-    </section> 
-</section>
+    <section class="box">
+        <h3>3列-后列占前中列剩下的全部空间</h3>
+        <section class="x-grid">
+            <article style="background-color:#a60;" class="x-span1">1</article>
+            <article style="background-color:#fea;" class="x-span0">2</article>
+            <article style="background-color:#f60;" class="x-span0">3</article>
+        </section>
+    </section>
 
-<section class="box">
-    <h3>3列等分</h3>
-    <section class="x-grid">
-        <article style="background-color:#a60;" class="x-span1">1</article>
-        <article style="background-color:#fea;" class="x-span1">2</article>
-        <article style="background-color:#f60;" class="x-span1">3</article>
-    </section> 
-</section>
+    <section class="box">
+        <h3>3列等分</h3>
+        <section class="x-grid">
+            <article style="background-color:#a60;" class="x-span1">1</article>
+            <article style="background-color:#fea;" class="x-span1">2</article>
+            <article style="background-color:#f60;" class="x-span1">3</article>
+        </section>
+    </section>
 
 
-<section class="box">
-    <h3>4列等分</h3>
-    <section class="x-grid">
-        <article style="background-color:#a60;" class="x-span1">1</article>
-        <article style="background-color:#fea;" class="x-span1">2</article>
-        <article style="background-color:#f60;" class="x-span1">3</article>
-        <article style="background-color:#bb3;" class="x-span1">4</article>
-    </section> 
-</section>
+    <section class="box">
+        <h3>4列等分</h3>
+        <section class="x-grid">
+            <article style="background-color:#a60;" class="x-span1">1</article>
+            <article style="background-color:#fea;" class="x-span1">2</article>
+            <article style="background-color:#f60;" class="x-span1">3</article>
+            <article style="background-color:#bb3;" class="x-span1">4</article>
+        </section>
+    </section>
 
 </body>
+
 </html>
