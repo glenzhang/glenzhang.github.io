@@ -1,17 +1,3 @@
-**coming soon**
- 
-    ├── branch
-        ├── static/  
-            ├── common/                
-                ├── css/    
-                ├── libs/    
-     
-        ├── demos
-        ├── reference
-        ├── index.html
-
-----------
-
     $("Me").attr({
         "name": "Glen"
         "role": "front-end猿",
