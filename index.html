@@ -12,108 +12,196 @@
     <link rel="stylesheet" href="static/common/css/base.css">
     <link rel="stylesheet" href="static/common/libs/bootstrap/3.2.0/css/bootstrap.css">
     <style>
-      @media (max-width: 320) { .thumbnail img{width:280px;} }
-      .caption{min-height: 130px;}
+    .caption {
+        position: relative;
+        min-height: 150px;
+    }
+    .caption:after {
+        height: 8px;
+        width: 0;
+        left: 50%;
+        bottom: 0;
+        background-color: #CC3399;
+        position: absolute;
+        display: block;
+        content: "";
+        z-index: 1;
+        transition-property: width, left;
+        transition-duration: 0.25s;
+        transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+    .caption1:after {
+        background-color: #FF6633;
+    }
+    .caption2:after {
+        background-color: #CC6633;
+    }
+    .caption3:after {
+        background-color: #3399CC;
+    }
+    .caption4:after {
+        background-color: #669900;
+    }
+    .caption5:after {
+        background-color: #66CCCC;
+    }
+    .caption6:after {
+        background-color: #FFCC00;
+    }
+    .caption7:after {
+        background-color: #FF9933;
+    }
+    .caption8:after {
+        background-color: #CC6633;
+    }
+    .thumbnail:hover {
+        text-decoration: none;
+    }
+    .thumbnail:hover .caption:after {
+        width: 100%;
+        left: 0;
+    }
     </style>
 </head>
-
 <body>
-
-   <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-6 col-md-4">
-          <a class="thumbnail" href="https://github.com/glenzhang/apispoof">
-            <img width="300" height="300" src="static/images/icon/apispoof.png" alt="JSONP data spoof tool">
-           
-            <div class="caption">
-              <h3>Api spoof</h3>
-              <p>JSON/JSONP data spoof tool</p>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://www.qianduanbiji.com/">Glen</a>
             </div>
-          </a>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="http://www.qianduanbiji.com/">Home</a>
+                    </li>
+                    <li><a href="http://www.qianduanbiji.com/tools">Tools</a>
+                    </li>
+                    <li><a href="http://www.qianduanbiji.com/reference">Reference</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div style="height:70px;"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <a class="thumbnail" href="https://github.com/glenzhang/apispoof">
+                    <img width="150" height="150" src="static/images/icon/apispoof.png" alt="JSONP data spoof tool">
+
+                    <div class="caption caption0">
+                        <h3>Api spoof</h3>
+                        <p>JSON/JSONP data spoof tool</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <a class="thumbnail" href="https://github.com/glenzhang/youmi">
+                    <img width="150" height="150" src="static/images/icon/youmi.png" alt="Youmi">
+                    <div class="caption caption1">
+                        <h3>Youmi</h3>
+                        <p>Youmi is javascript function collection, will improve the efficiency of development.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <a class="thumbnail" href="https://github.com/glenzhang/magicbar">
+                    <img width="150" height="150" src="static/images/icon/magicbar.png" alt="magicbar">
+                    <div class="caption caption2">
+                        <h3>Magicbar</h3>
+                        <p>like Tmall right side</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <a class="thumbnail" href="https://github.com/glenzhang/fileupload">
+                    <img width="150" height="150" src="static/images/icon/fileupload.png" alt="fileupload">
+                    <div class="caption caption3">
+                        <h3>File upload</h3>
+                        <p>used to upload file on pc/mobile</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <a class="thumbnail" href="https://github.com/glenzhang/staticmicrobuild">
+                    <img width="150" height="150" src="static/images/icon/staticmicrobuild.png" alt="Static micro-build">
+                    <div class="caption caption4">
+                        <h3>Static micro-build</h3>
+                        <p>small tool to build staic file</p>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-3">
+                <a class="thumbnail" href="https://github.com/glenzhang/lmu">
+                    <img width="150" height="150" src="static/images/icon/lmu.png" alt="XMU">
+                    <div class="caption caption5">
+                        <h3>LMU</h3>
+                        <p>it's a h5 ui library based on jquery2.0</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <a class="thumbnail" href="https://github.com/glenzhang/ubt">
+                    <img width="150" height="150" src="static/images/icon/ubt.png" alt="User Behavior Trace">
+                    <div class="caption caption6">
+                        <h3>User Behavior Trace</h3>
+                        <p class="red">Comming soon</p>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-3">
+                <a class="thumbnail" href="https://github.com/glenzhang/grunt">
+                    <img width="150" height="150" src="static/images/icon/grunt.png" alt="grunt">
+                    <div class="caption caption7">
+                        <h3>Grunt</h3>
+                        <p>Grunt workflow</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <a class="thumbnail" href="https://rawgithub.com/glenzhang/jstween/master/animation.html">
+                    <img width="150" height="150" src="static/images/icon/jstween.png" alt="JS tween">
+                    <div class="caption caption8">
+                        <h3>JS tween</h3>
+                        <p>jquery animation extension</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container center">
+        <ul>
+          <li>© 2015 Glen</li>
+        </ul>
+    </div>
     
-        <div class="col-sm-6 col-md-4">
-          <a class="thumbnail" href="https://github.com/glenzhang/youmi">
-            <img width="300" height="300" src="static/images/icon/youmi.png" alt="Youmi">
-            <div class="caption">
-              <h3>Youmi</h3>
-              <p>Youmi is javascript function collection, will improve the efficiency of development.</p>
-            </div>
-          </a>
-        </div>
+    <script src="static/common/libs/jquery/jquery-2.1.1.js"></script>
+    <script src="static/common/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     
-        <div class="col-sm-6 col-md-4">
-          <a class="thumbnail" href="https://github.com/glenzhang/magicbar"> 
-            <img width="300" height="300" src="static/images/icon/magicbar.png" alt="magicbar">
-            <div class="caption">
-              <h3>Magicbar</h3>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-          <a class="thumbnail" href="https://github.com/glenzhang/fileupload">
-            <img width="300" height="300" src="static/images/icon/fileupload.png" alt="fileupload">
-            <div class="caption">
-              <h3>File upload</h3>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-          <a class="thumbnail" href="https://github.com/glenzhang/staticmicrobuild">  
-            <img width="300" height="300" src="static/images/icon/staticmicrobuild.png" alt="Static micro-build">
-            <div class="caption">
-              <h3>Static micro-build</h3>
-            </div>
-          </a>
-        </div>
-
-
-        <div class="col-sm-6 col-md-4">
-          <a class="thumbnail" href="https://github.com/glenzhang/lmu">
-            <img width="300" height="300" src="static/images/icon/lmu.png" alt="XMU">
-            <div class="caption">
-              <h3>LMU</h3>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-          <a class="thumbnail" href="https://github.com/glenzhang/ubt">
-            <img width="300" height="300" src="static/images/icon/ubt.png" alt="User Behavior Trace">
-            <div class="caption">
-              <h3>User Behavior Trace</h3>
-              <p class="red">Comming soon</p>
-            </div>
-          </a>
-        </div>
-
-
-        <div class="col-sm-6 col-md-4">
-          <a class="thumbnail" href="https://github.com/glenzhang/grunt">
-            <img width="300" height="300" src="static/images/icon/grunt.png" alt="grunt">
-            <div class="caption">
-              <h3>Grunt</h3>
-              <p>Grunt workflow</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-          <a class="thumbnail" href="https://rawgithub.com/glenzhang/jstween/master/animation.html">
-            <img width="300" height="300" src="static/images/icon/jstween.png" alt="JS tween">
-            <div class="caption">
-              <h3>JS tween</h3>
-            </div>
-          </a>
-        </div>
-
-      </div>
-   </div>
-    <!--
-    <script src="static/common/libs/jquery/jquery-1.11.1.js"></script>
-    -->
 </body>
 
 </html>
