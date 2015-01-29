@@ -33,6 +33,11 @@
 
     var employeeArrVariant = JSON.parse(localStorage.getItem(lsKey)).ea;
 
+    $ydj.find("option").each(function () {
+        var val = $(this).val();
+        $prizeArea.append(localStorage.getItem("ydj{0}".format(val)));
+    });
+
     function applyBehavior() {
         var firstUl = $("#J_namelist").find("ul:first");
         var firstLi = firstUl.find("li:first");
@@ -89,6 +94,9 @@
         });
 
         $cydj.append(name + "" + dept + " ");
+
+        localStorage.setItem("ydj{0}".format($ydj.val()), $cydj.prop("outerHTML"));
+
         currentNum--;
         if (currentNum > 0) {
             start();
