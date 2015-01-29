@@ -92,7 +92,7 @@ hr.space { background: #fff; color: #fff; visibility: hidden; }
 .clearfix, .container { *zoom: 1; }
 
 
-body { background: #94101B url(bg1.jpg) repeat 0 0 scroll;; }
+body { background: #94101B url(bg.jpg) repeat 0 0 scroll;; }
 .mt10 { margin-top: 10px; }
 
 .container { margin-top: 100px;}
