@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>wxjssdk</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>Weixin js sdk</h1>
+<p>有时候, h5页面需要在微信里面打开，而且微信的占有率是杠杠的。在分享朋友与朋友圈的时候，需要自定义title, img, url等。早期微信官方是不支持自定义的，有同行通过对微信APP的研究开发了<a href="http://github.com/sofish/wechat.js">wechat.js</a>, 帮助大家自定义分享内容。现在微信官方支持自定义了，本文介绍如何部署<a href="http://res.wx.qq.com/open/js/jweixin-1.0.0.js">jweixin</a>。</p>
+<h2>准备一个已经认证的微信公众号</h2>
+<ol>
+<li>查看公众号是否认证。 <a href="https://mp.weixin.qq.com">登录微信公众平台</a> - 设置 - 公众号设置 - 认证情况。 </li>
+<li>
+<strong>公众号主体类型为个人的无法申请认证</strong>。
+<blockquote>
+<p><img src="http://www.qianduanbiji.com/static/weixin/images/noauthright.jpg" alt="noauthright" /></p>
+</blockquote>
+</li>
+<li>
+一定是微信认证，微博认证是无法调用分享接口的。
+<blockquote>
+<p><a href="http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html">附录5</a>-常见错误及解决方法- 8.在iOS和Android都无法分享（请确认公众号已经认证，只有认证的公众号才具有分享相关接口权限，如果确实已经认证，则要检查监听接口是否在wx.ready回调函数中触发）</p>
+</blockquote>
+</li>
+</ol>
+<h2>获取appid和appsecret</h2>
+<ol>
+<li><a href="https://mp.weixin.qq.com">登录微信公众平台</a> - 开发者中心</li>
+<li>appsecret是隐藏的，如<code>01****************************18</code>，请点击完整显示用微信扫一扫向管理员申请</li>
+</ol>
+<h2>接口调用上限</h2>
+<ol>
+<li>
+<p>获取access_token	 每日调用上限2000次。 </p>
+<blockquote>
+<p><a href="http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html">附录5</a>-常见错误及解决方法- 10.服务上线之后无法获取jsapi<em>ticket，自己测试时没问题。（因为access</em>token和jsapi_ticket必须要在自己的服务器缓存，否则上线后会触发频率限制。请确保一定对token和ticket做缓存以减少2次服务器请求，不仅可以避免触发频率限制，还加快你们自己的服务速度。目前为了方便测试提供了1w的获取量，超过阀值后，服务将不再可用，请确保在服务上线前一定全局缓存access<em>token和jsapi</em>ticket，两者有效期均为7200秒，否则一旦上线触发频率限制，服务将不再可用）。</p>
+</blockquote>
+</li>
+<li>
+<p>用redis被动缓存1个小时。</p>
+</li>
+</ol>
+<h2>准备微信相关js</h2>
+<ol>
+<li>
+<p>判断微信浏览器</p>
+<pre><code>var isFromWeixin = navigator.userAgent.toLowerCase().indexOf(&quot;micromessenger&quot;) &gt; -1;
+</code></pre>
+
+</li>
+<li>
+<p>指导用户分享层</p>
+<pre><code>(function () {
+    var guideId = &quot;J_weixin_share_guide&quot;;
+    var $guide;
+
+    function openShareGuide() {
+        $guide = document.querySelector(&quot;#&quot; + guideId);
+        if (!$guide) {
+            buildGuide();
+        } else {
+            showGuide();
+        }
+    }
+
+    function showGuide() {
+        $guide.style.display = &quot;block&quot;;
+    }
+
+    function hideGuide() {
+        $guide.style.display = &quot;none&quot;;
+    }
+
+    function buildGuide() {
+        var isIos = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+        var DIV = document.createElement(&quot;DIV&quot;);
+        DIV.setAttribute(&quot;id&quot;, guideId);
+        DIV.style.cssText = &quot;position:fixed; top:0;left:0; z-index:9999; display:block;width:100%; height:100%;background:rgba(0,0,0,.7);&quot;;
+
+        var A = document.createElement(&quot;A&quot;);
+        A.setAttribute(&quot;href&quot;, &quot;javascript:void(0)&quot;);
+        A.style.cssText = isIos ? &quot;display:block;width:100%; height:100%; background:url(http://www.qianduanbiji.com/static/weixin/images/share-ios.alpha.png) no-repeat; background-size:100% auto;&quot; : &quot;display:block;width:100%; height:100%; background:url(http://www.qianduanbiji.com/static/weixin/images/share-android.alpha.png) no-repeat; background-size:100% auto;&quot;;
+
+        DIV.appendChild(A);
+
+        DIV.addEventListener(&quot;click&quot;, function () {
+            hideGuide();
+        }, false);
+
+        document.getElementsByTagName(&quot;body&quot;)[0].appendChild(DIV);
+    }
+
+    return YourOwnNamespace = {
+        openShareGuide: openShareGuide
+    };
+
+}());
+</code></pre>
+
+</li>
+<li>
+<p>js加载器， 如<a href="http://headjs.com">head.js</a></p>
+</li>
+<li><a href="http://res.wx.qq.com/open/js/jweixin-1.0.0.js">weixin js sdk文件</a></li>
+</ol>
+<h2>部署</h2>
+<p><strong>h5页面如果是在自己的App打开就调用自己的分享逻辑了。weixin js sdk应是无侵入式的，不破坏原有逻辑， 在微信浏览器打开需要分享的页面时才会加载上面准备的js文件</strong></p>
+<ol>
+<li>
+<p>生成签名，请<a href="http://demo.open.weixin.qq.com/jssdk/sample.zip">参照</a></p>
+</li>
+<li>
+<p>新建公用可引入模板(有一些变量依赖后台代码输出)， 如 wx.html，内容如下</p>
+<pre><code>&lt;script&gt;
+if (isFromWeixin) {
+    window.wxFanliConfig = {
+        debug: false,
+        // 朋友圈
+        timeline: {
+            title: &lt;?php echo!empty($wxShareTimeline['title']) ? '&quot;'.$wxShareTimeline['title'].
+            '&quot;': &quot;document.title&quot;; ?&gt; ,
+            desc: &lt;?php echo!empty($wxShareTimeline['desc']) ? '&quot;'.$wxShareTimeline['desc'].
+            '&quot;': &quot;document.title&quot;; ?&gt; ,
+            url: &lt;?php echo!empty($wxShareTimeline['url']) ? '&quot;'.$wxShareTimeline['url'].
+            '&quot;': &quot;location.href&quot;; ?&gt; ,
+            img: &lt;?php echo!empty($wxShareTimeline['img']) ? '&quot;'.$wxShareTimeline['img'].
+            '&quot;': &quot;document.images[0].src&quot;; ?&gt;
+        },
+        // 朋友
+        session: {
+            title: &lt;?php echo!empty($wxShareSession['title']) ? '&quot;'.$wxShareSession['title'].
+            '&quot;': &quot;document.title&quot;; ?&gt; ,
+            desc: &lt;?php echo!empty($wxShareSession['desc']) ? '&quot;'.$wxShareSession['desc'].
+            '&quot;': &quot;document.title&quot;; ?&gt; ,
+            url: &lt;?php echo!empty($wxShareSession['url']) ? '&quot;'.$wxShareSession['url'].
+            '&quot;': &quot;location.href&quot;; ?&gt; ,
+            img: &lt;?php echo!empty($wxShareSession['img']) ? '&quot;'.$wxShareSession['img'].
+            '&quot;': &quot;document.images[0].src&quot;; ?&gt;
+        },
+
+        appId: &lt;?php echo!empty($wxShare['appId']) ? '&quot;'.$wxShare['appId'].
+        '&quot;': &quot;\&quot;\&quot;&quot;; ?&gt; ,
+        timestamp: &lt;?php echo!empty($wxShare['timestamp']) ? '&quot;'.$wxShare['timestamp'].
+        '&quot;': &quot;\&quot;\&quot;&quot;; ?&gt; ,
+        nonceStr: &lt;?php echo!empty($wxShare['nonceStr']) ? '&quot;'.$wxShare['nonceStr'].
+        '&quot;': &quot;\&quot;\&quot;&quot;; ?&gt; ,
+        signature: &lt;?php echo!empty($wxShare['signature']) ? '&quot;'.$wxShare['signature'].
+        '&quot;': &quot;\&quot;\&quot;&quot;; ?&gt; ,
+        jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage'
+        ]
+    };
+
+    pageJsListArr.push(&quot;http://res.wx.qq.com/open/js/jweixin-1.0.0.js&quot;);
+    pageJsListArr.push(&quot;http://www.qianduanbiji.com/static/weixin/js/shareguide.js&quot;);
+
+    pageJsLoadedCallbackArr.push(function() {
+        // weixin config
+        wx.config({
+            debug: wxFanliConfig.debug,
+            appId: wxFanliConfig.appId,
+            timestamp: wxFanliConfig.timestamp,
+            nonceStr: wxFanliConfig.nonceStr,
+            signature: wxFanliConfig.signature,
+            jsApiList: wxFanliConfig.jsApiList
+        });
+
+        wx.ready(function() {
+
+            // config信息验证后会执行ready方法，
+            // 所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，
+            // 所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。
+            // 对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+
+            // 分享给朋友
+            wx.onMenuShareAppMessage({
+                title: wxFanliConfig.session.title,
+                desc: wxFanliConfig.session.desc,
+                link: wxFanliConfig.session.url,
+                imgUrl: wxFanliConfig.session.img,
+                trigger: function(res) {
+                    //alert('用户点击发送给朋友');
+                },
+                success: function(res) {
+                    //alert('已分享');
+                },
+                cancel: function(res) {
+                    alert('已取消');
+                },
+                fail: function(res) {
+                    alert('分享失败');
+                }
+            });
+
+            // 分享到朋友圈
+            wx.onMenuShareTimeline({
+                title: wxFanliConfig.timeline.title,
+                desc: wxFanliConfig.timeline.desc,
+                link: wxFanliConfig.timeline.url,
+                imgUrl: wxFanliConfig.timeline.img,
+                trigger: function(res) {
+                    //alert('用户点击分享到朋友圈');
+                },
+                success: function(res) {
+                    //alert('已分享');
+                },
+                cancel: function(res) {
+                    alert('已取消');
+                },
+                fail: function(res) {
+                    //alert(JSON.stringify(res));
+                    alert('分享失败');
+                }
+            });
+
+        });
+
+        wx.error(function(res) {
+            // config信息验证失败会执行error函数，如签名过期导致验证失败，
+            // 具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+        });
+    });
+}
+&lt;/script&gt;
+</code></pre>
+
+<p><strong>php变量需要后台输出</strong></p>
+</li>
+<li>
+<p>在需要定制分享的页面引入wx.html</p>
+</li>
+<li>
+<p>载入</p>
+<pre><code>setTimeout(function(){head.load(pageJsListArr, function() {
+    for(var i = 0, len = pageJsLoadedCallbackArr.length; i &lt; len; ++i) {
+        pageJsLoadedCallbackArr[i]();
+    }
+});}, 10);
+</code></pre>
+
+</li>
+</ol>
+<h2>坑点</h2>
+<ol>
+<li>认证公众号才有分享权限</li>
+<li>页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行</li>
+<li>获取access_token	 每日调用上限2000次</li>
+</ol>
+<h2>参考</h2>
+<ol>
+<li><a href="http://demo.open.weixin.qq.com/jssdk">api demo</a></li>
+<li><a href="http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html">微信JSSDK说明文档</a></li>
+<li><a href="http://mp.weixin.qq.com/wiki/0/2e2239fa5f49388d5b5136ecc8e0e440.html">接口频率限制说明</a></li>
+<li><a href="http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html#.E9.99.84.E5.BD.955-.E5.B8.B8.E8.A7.81.E9.94.99.E8.AF.AF.E5.8F.8A.E8.A7.A3.E5.86.B3.E6.96.B9.E6.B3.95">常见错误及解决方法</a></li>
+</ol>
+<p><strong>还未涉及到微信支付，留待后续补充</strong></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
