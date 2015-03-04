@@ -133,7 +133,7 @@ body .markdown-body
 }
 
 .markdown-body .codehilitetable pre,
-.markdown-body div.codehilite {
+.markdown-body .codehilitetable div.codehilite {
   margin: 0;
 }
 
@@ -583,16 +583,11 @@ body .markdown-body
 .markdown-body .admonition {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
+  position: relative;
   border-radius: 3px;
-  padding: 0.5em 1em 0.5em 1em;
-  color: #888888;
-  background-color: #F7F7F7;
-  border: 1px solid #888888;
-}
-
-.markdown-body .admonition blockquote {
-  color: rgba(136, 136, 136, 0.5);
-  border-left: 4px solid rgba(136, 136, 136, 0.5);
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
 }
 
 .markdown-body .admonition table {
@@ -601,7 +596,6 @@ body .markdown-body
 
 .markdown-body .admonition p {
   padding: 0;
-  margin: 0;
 }
 
 .markdown-body .admonition-title {
@@ -609,110 +603,125 @@ body .markdown-body
   margin: 0;
 }
 
-.markdown-body .admonition-icon {
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
   font: normal normal 16px fontawesome-mini;
-  line-height: 1.5;
   -moz-osx-font-smoothing: grayscale;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  float: left;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
 }
 
 .markdown-body .attention {
-  color: #4F8A10;
-  background-color: #DFF2BF;
-  border: 1px solid #4F8A10;
+  border-left: 6px solid #a6d796;
 }
 
 .markdown-body .caution {
-  color: #D63301;
-  background-color: #FFCCBA;
-  border: 1px solid #D63301;
+  border-left: 6px solid #d7a796;
 }
 
 .markdown-body .hint {
-  color: #00529B;
-  background-color: #BDE5F8;
-  border: 1px solid #00529B;
+  border-left: 6px solid #96c6d7;
 }
 
 .markdown-body .danger {
-  color: #D8000C;
-  background-color: #FFBABA;
-  border: 1px solid #D8000C;
+  border-left: 6px solid #c25f77;
 }
 
 .markdown-body .question {
-  color: #00049b;
-  background-color: #BDC8F8;
-  border: 1px solid #00049b;
+  border-left: 6px solid #96a6d7;
 }
 
 .markdown-body .note {
-  color: #9F6000;
-  background-color: #FEEFB3;
-  border: 1px solid #9F6000;
+  border-left: 6px solid #d7c896;
 }
 
-.markdown-body .attention {
-  color: #4F8A10;
-  background-color: #DFF2BF;
-  border: 1px solid #4F8A10;
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
 }
 
-.markdown-body .caution blockquote {
-  color: rgba(214, 51, 1, .5);
-  border-left: 4px solid rgba(214, 51, 1, .5);
-}
-
-.markdown-body .hint blockquote {
-  color: rgba(0, 82, 155, .5);
-  border-left: 4px solid rgba(0, 82, 155, .5);
-}
-
-.markdown-body .danger blockquote {
-  color: rgba(216, 0, 12, .5);
-  border-left: 4px solid rgba(216, 0, 12, .5);
-}
-
-.markdown-body .question blockquote {
-  color: rgba(0, 4, 155, .5);
-  border-left: 4px solid rgba(0, 4, 155, .5);;
-}
-
-.markdown-body .note blockquote {
-  color: rgba(159, 96, 0, .5);
-  border-left: 4px solid rgba(159, 96, 0, .5);
-}
-
-.markdown-body .admonition-icon:before {
-  content: "\f040\00a0";
-}
-
-.markdown-body .attention > .admonition-icon:before {
-  content: "\f058\00a0";
-}
-
-.markdown-body .caution > .admonition-icon:before {
-  content: "\f06a\00a0";
-}
-
-.markdown-body .hint > .admonition-icon:before {
-  content: "\f05a\00a0";
-}
-
-.markdown-body .danger > .admonition-icon:before {
-  content: "\f056\00a0";
-}
-
-.markdown-body .question > .admonition-icon:before {
-  content: "\f059\00a0";
-}
-
-.markdown-body .note > .admonition-icon:before {
-  content: "\f040\00a0";
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
 }
 
 /* progress bar*/
@@ -721,11 +730,10 @@ body .markdown-body
   width: 300px;
   margin: 10px 0;
   height: 24px;
-  border: 1px solid #ccc;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  background-color: #F8F8F8;
+  background-color: #ededed;
   position: relative;
   box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
 }
@@ -746,81 +754,71 @@ body .markdown-body
 .markdown-body .progress-bar {
   height: 24px;
   float: left;
-  border-right: 1px solid #ccc;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  background-color: #34c2e3;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5);
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
   background-size: 30px 30px;
   background-image: -webkit-linear-gradient(
     135deg, rgba(255, 255, 255, .4) 27%,
     transparent 27%,
-    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
     rgba(255, 255, 255, .4) 77%,
     transparent 77%, transparent
   );
   background-image: -moz-linear-gradient(
     135deg,
     rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
     rgba(255, 255, 255, .4) 77%, transparent 77%,
     transparent
   );
   background-image: -ms-linear-gradient(
     135deg,
     rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
     rgba(255, 255, 255, .4) 77%, transparent 77%,
     transparent
   );
   background-image: -o-linear-gradient(
     135deg,
     rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
     rgba(255, 255, 255, .4) 77%, transparent 77%,
     transparent
   );
   background-image: linear-gradient(
     135deg,
     rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
     rgba(255, 255, 255, .4) 77%, transparent 77%,
     transparent
   );
 }
 
 .markdown-body .progress-100plus .progress-bar {
-  background-color: #1ee038;
+  background-color: #a6d796;
 }
 
 .markdown-body .progress-80plus .progress-bar {
-  background-color: #86e01e;
+  background-color: #c6d796;
 }
 
 .markdown-body .progress-60plus .progress-bar {
-  background-color: #f2d31b;
+  background-color: #d7c896;
 }
 
 .markdown-body .progress-40plus .progress-bar {
-  background-color: #f2b01e;
+  background-color: #d7a796;
 }
 
 .markdown-body .progress-20plus .progress-bar {
-  background-color: #f27011;
+  background-color: #d796a6;
 }
 
 .markdown-body .progress-0plus .progress-bar {
-  background-color: #f63a0f;
-}
-
-.markdown-body .gloss .progress-bar {
-  box-shadow:
-    inset -1px 1px 0 rgba(255, 255, 255, .5),
-    inset 0 -4px 12px rgba(255, 255, 255, .7),
-    inset 0 4px 12px rgba(255, 255, 255, .7),
-    inset 0 -12px 0 rgba(0, 0, 0, .05),
-    inset 1px -1px 0 rgba(255, 255, 255, .2);
+  background-color: #c25f77;
 }
 
 .markdown-body .candystripe-animate .progress-bar{
@@ -857,6 +855,12 @@ body .markdown-body
   100% {
     background-position: 60px 0;
   }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
 }
 
 /* Multimarkdown Critic Blocks */
@@ -975,7 +979,18 @@ body .markdown-body
 
   .markdown-body .progress,
   .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
     box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
   }
 
   .markdown-body tr,
@@ -999,12 +1014,78 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>hybridexperience</title></head><body><article class="markdown-body"><h1 id="css"><a name="user-content-css" href="#css" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>CSS</h1>
+</style><title>hybridexperience</title></head><body><article class="markdown-body"><h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>技巧</h1>
+<ol>
+<li>用<code>-webkit-tap-highlight-color</code>代替<code>a:active</code></li>
+<li>
+<p>酌情使用touchend代替click, 移动浏览器上click会延时300ms</p>
+</li>
+<li>
+<p>用CSS动画代替JS动画，在Android平台上可以平稳退化，放弃动画效果(包括CSS3动画)</p>
+</li>
+<li>
+<p>css3动画闪烁解决方案 强制把需要进行动画行为的dom对象在GPU中创建Layout缓存 </p>
+<pre><code>-webkit-transform:translateZ(0);
+-webkit-transform-style:preserve-3d;
+-webkit-backface-visibility:hidden;
+</code></pre>
+</li>
+<li>
+<p>将css3动画属性style到元素，以加快解析执行</p>
+</li>
+<li>
+<p>跨域, 增加允许http跨域头</p>
+<pre><code>php: header(&ldquo;Access-Control-Allow-Origin: {$_SERVER[&lsquo;HTTP_ORIGIN&rsquo;]}&rdquo;);</code></pre>
+</li>
+<li>
+<p>用手机自带浏览器访问某页面如： <a href="http://m.51fanli.com">http://m.51fanli.com</a>, 然后再用app webview打开这个页面，其session是向通的。</p>
+</li>
+<li>
+<p>用HTML5的离线存储和本地存储进行缓存，或者将页面直接打包到客户端中，减少在网络下载中的耗时。</p>
+</li>
+<li>
+<p>减少DOM数量，尽可能少的使用<code>position:relative</code>，减少对DOM的操作</p>
+</li>
+<li>
+<p>避免GIF图片的使用(消耗内存)</p>
+</li>
+<li>
+<p>如果只是在移动端使用的话，请使用iScroll-lite来代替iScroll(iScroll里面增加了很多额外的功能，比如在PC上模拟滚动)，在允许的情况下，可以关闭滚动条(滚动条也是创建的DOM元素)</p>
+</li>
+<li>
+<p>典型的web app head部分</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;site title&lt;/title&gt;
+        &lt;meta charset=&rdquo;utf-8&rdquo;&gt;
+        &lt;meta name=&rdquo;viewport&rdquo; content=&rdquo;width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0&rdquo;&gt;
+        &lt;meta name=&rdquo;apple-mobile-web-app-capable&rdquo; content=&rdquo;yes&rdquo;/&gt;
+        &lt;meta name=&rdquo;apple-mobile-web-app-capable&rdquo; content=&rdquo;yes&rdquo;/&gt;
+        &lt;meta name=&rdquo;format-detection&rdquo; content=&rdquo;telephone=no&rdquo;&gt;
+        &lt;meta name=&rdquo;format-detection&rdquo; content=&rdquo;address=no&rdquo;&gt;
+        &lt;meta name=&rdquo;format-detection&rdquo; content=&rdquo;email=no&rdquo;&gt;
+        &lt;meta http-equiv=&rdquo;x-dns-prefetch-control&rdquo; content=&rdquo;on&rdquo; /&gt;
+        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l0.51fanli.net&rdquo;&gt;
+        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l1.51fanli.net&rdquo;&gt;
+        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l2.51fanli.net&rdquo;&gt;
+        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l3.51fanli.net&rdquo;&gt;
+        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l4.51fanli.net&rdquo;&gt;
+        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//static2.51fanli.net&rdquo;&gt;
+        &lt;link rel=&rdquo;apple-touch-icon-precomposed&rdquo; size=&rdquo;114x114&rdquo; href=&rdquo;http://static2.51fanli.net/common/images/webapp/dockicon.png&rdquo;/&gt;
+  &lt;/head&gt;</code></pre>
+</li>
+</ol>
+<h1 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>坑点</h1>
+<h3 id="css"><a name="user-content-css" href="#css" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>CSS</h3>
 <ol>
 <li>
 <p>红米手机-圆角外背景色溢出</p>
 <p><em>对元素设置圆角及背景色 border-radius:50px;background-color:#000; 四个圆角外会溢出背景色</em></p>
-<p><strong>解决方案：</strong>增加样式<code>background-clip:padding-box;</code><a href="http://blog.csdn.net/luochao_tj/article/details/21469017">参考</a></p>
+<p><strong>解决方案：</strong>增加样式<code>background-clip:padding-box;</code></p>
+<blockquote>
+<p><a href="http://blog.csdn.net/luochao_tj/article/details/21469017">参考</a></p>
+</blockquote>
 </li>
 <li>
 <p>小米1s手机-android2.3以下<code>fixed+transform</code>无效</p>
@@ -1017,7 +1098,7 @@ body .markdown-body
 <p><strong>解决方案：</strong>css改变容器<code>min-width</code></p>
 </li>
 </ol>
-<h1 id="js"><a name="user-content-js" href="#js" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>JS</h1>
+<h3 id="js"><a name="user-content-js" href="#js" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>JS</h3>
 <ol>
 <li>
 <p>软键盘调出后隐藏，一些fixed元素布局呈现到奇怪的位置</p>
@@ -1029,9 +1110,9 @@ body .markdown-body
 </code></pre>
 </li>
 </ol>
-<h1 id="dom"><a name="user-content-dom" href="#dom" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>DOM</h1>
+<h3 id="dom"><a name="user-content-dom" href="#dom" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>DOM</h3>
 <p>&hellip;</p>
-<h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>其它</h1>
+<h3 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>其它</h3>
 <ol>
 <li>
 <p>iScroll横向滚动区域无法拉动页面</p>
@@ -1070,39 +1151,4 @@ body .markdown-body
     &lt;/IfModule&gt;
 &lt;/FilesMatch&gt;</code></pre>
 </li>
-</ol>
-<h1 id="tips"><a name="user-content-tips" href="#tips" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>tips</h1>
-<ul>
-<li>用-webkit-tap-highlight-color代替a:active</li>
-<li>用tap事件代替click, 移动浏览器上click会延时300ms</li>
-<li>css3动画替换JS动画</li>
-<li>css3动画闪烁解决方案 -webkit-transform-style:preserve-3d; -webkit-backface-visibility:hidden;</li>
-<li>将css3动画属性style到元素，以加快解析执行</li>
-<li>用手机自带浏览器访问某页面如： <a href="http://m.51fanli.com">http://m.51fanli.com</a>, 然后再用app打开这个页面，session是公用的。</li>
-<li>
-<p>典型的web app head部分</p>
-<pre><code>&lt;!doctype html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;site title&lt;/title&gt;
-        &lt;meta charset=&rdquo;utf-8&rdquo;&gt;
-        &lt;meta name=&rdquo;viewport&rdquo; content=&rdquo;width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0&rdquo;&gt;
-        &lt;meta name=&rdquo;apple-mobile-web-app-capable&rdquo; content=&rdquo;yes&rdquo;/&gt;
-        &lt;meta name=&rdquo;apple-mobile-web-app-capable&rdquo; content=&rdquo;yes&rdquo;/&gt;
-        &lt;meta name=&rdquo;format-detection&rdquo; content=&rdquo;telephone=no&rdquo;&gt;
-        &lt;meta name=&rdquo;format-detection&rdquo; content=&rdquo;address=no&rdquo;&gt;
-        &lt;meta name=&rdquo;format-detection&rdquo; content=&rdquo;email=no&rdquo;&gt;
-        &lt;meta http-equiv=&rdquo;x-dns-prefetch-control&rdquo; content=&rdquo;on&rdquo; /&gt;
-        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l0.51fanli.net&rdquo;&gt;
-        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l1.51fanli.net&rdquo;&gt;
-        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l2.51fanli.net&rdquo;&gt;
-        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l3.51fanli.net&rdquo;&gt;
-        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//l4.51fanli.net&rdquo;&gt;
-        &lt;link rel=&rdquo;dns-prefetch&rdquo; href=&rdquo;//static2.51fanli.net&rdquo;&gt;
-        &lt;link rel=&rdquo;apple-touch-icon-precomposed&rdquo; size=&rdquo;114x114&rdquo; href=&rdquo;http://static2.51fanli.net/common/images/webapp/dockicon.png&rdquo;/&gt;
-  &lt;/head&gt;</code></pre>
-</li>
-<li>
-<p>MORE TO BE ADDED</p>
-</li>
-</ul></article></body></html>
+</ol></article></body></html>
