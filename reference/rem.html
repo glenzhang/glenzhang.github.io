@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>viewport</title>
+
+    <script type="text/javascript">
+    ! function() {
+        var html = document.documentElement;
+        var ua = navigator.userAgent;
+        var appv = navigator.appVersion;
+        var dpr = /iP(hone|od|ad)/.test(ua) ? window.devicePixelRatio || 1 : 1;
+        var meta = document.querySelector('meta[name="viewport"]');
+        var u = 1 / dpr;
+
+        html.setAttribute("data-dpr", dpr);
+
+        html.style.fontSize = 100 * dpr + "px";
+
+        meta.setAttribute("content", "initial-scale=" + u + ", maximum-scale=" + u + ", minimum-scale=" + u + ", user-scalable=no");
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.style.fontSize = 14 * dpr + "px";
+        }, false);
+    }();
+    </script>
+
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
+
+    .rem-ele {
+        width: 200px;
+        box-sizing: border-box;
+        border: 1px solid red;
+    }
+
+    [data-dpr] .rem-ele{
+        width: 2rem;
+    }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="rem-ele">1990年5月17日，原先驻扎连江县的南京军区某师师部奉命迁入福州市郊五凤山脚下的军营。当天晚上，刚刚上任九天的福州市委书记习近平连夜冒雨走进了部队临时搭建的野战帐篷。“你们刚搬到这里，困难肯定不少。有多少难处，竹筒倒豆子，全都倒出来。然后我们再逐个帮你们捡起来，一粒不会少。”习近平微笑着说。</div>
+
+
+<ol>
+  <li><strong>硬件兼容性: </strong>测试发现红米，华为等android机型的devicePixelRatio为2，但是表现的布局还是1。为了兼容性，将所有android的dpr统一设置为1。</li>
+  <li><strong>基准: </strong>设置基本font size为100px 则 height:　0.5rem[50px]</li>
+  <li><strong>降级: </strong>对于不支持rem的机型，先设置px单位，再覆盖rem
+<pre>
+.rem-ele { 
+    height: 50px;
+}
+
+[data-dpr] .rem-ele { 
+    height: 0.5rem;
+}
+</pre>
+  </li>
+<li><strong>覆写: </strong>
+<section>
+dpr覆写
+<pre>
+[data-dpr="1"] .rem-ele {
+    height: 0.51rem;
+}
+[data-dpr="2"] .rem-ele {
+    height: 0.52rem;
+}
+[data-dpr="3"] .rem-ele {
+    height: 0.53rem;
+}
+</pre>
+    media + dpr 覆写
+<pre>
+@media all and 
+    (min-device-width:414px){
+    [data-dpr="1"] .rem-ele {
+        height: 0.51rem;
+    }
+    [data-dpr="2"] .rem-ele {
+        height: 0.52rem;
+    }
+    [data-dpr="3"] .rem-ele {
+        height: 0.53rem;
+    }
+}
+</pre>
+</section>
+</li>
+</ol>
+
+
+</body>
+
+</html>
