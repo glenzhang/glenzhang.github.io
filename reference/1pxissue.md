@@ -57,15 +57,38 @@ Apple找到了一个办法：在移动版(iOS)的Safari中定义了viewport meta
 
 结合返利网的实际情况，推荐使用
 
-1. 非varnish页面，直接由php输出 harelines class到html
-2. 前台js判断hareline class存在与否，处理varnish页面
-3. 对ios7以下和其他android机：维持原样，不去处理，随着时间的推移，最终都会支持0.5 和 0.3 px边框的。
+1. 前台js判断增加hareline class
+	
+		!function () {
+		    var ua = navigator.userAgent;
+		    var appv = navigator.appVersion;
+		    var isIos = /iP(hone|od|ad)/.test(ua);
+		    var html = document.documentElement;
+		    
+		    !function () {
+		        //1. ios, HTML.fl-ios
+		        //2. ios version > 8, HTML.fl-hairlines
+		        var vArr, ver;
 		
-		@media (-webkit-min-device-pixel-ratia: 2) {
-			.harelines .ele{
-				border-width: 0.5px;
-			}
+		        if (isIos) {
+		            html.classList.add("fl-ios");
+		            vArr = appv.match(/OS (\d+)_(\d+)_?(\d+)?/);
+		            ver = parseInt(vArr[1], 10);
+		
+		            if (ver >= 8) {
+		                html.classList.add("fl-hairlines");
+		            }
+		        }
+		    }();
+		}();
+	
+
+2. 对ios7以下和其他android机：维持原样，不去处理，随着时间的推移，最终都会支持0.5 和 0.3 px边框的。
+
+		.fl-hairline .ele{
+			border-width: 0.5px;
 		}
+		
 
 
 ## 参考 ##

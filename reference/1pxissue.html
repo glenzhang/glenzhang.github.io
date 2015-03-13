@@ -1062,12 +1062,35 @@ body .markdown-body
 <p>其他行家已经总结了很多，这里不赘述了，具体请<a href="http://www.ghugo.com/css-retina-hairline/?utm_source=tuicool">参考</a></p>
 <p>结合返利网的实际情况，推荐使用</p>
 <ol>
-<li>非varnish页面，直接由php输出 harelines class到html</li>
-<li>前台js判断hareline class存在与否，处理varnish页面</li>
-<li>对ios7以下和其他android机：维持原样，不去处理，随着时间的推移，最终都会支持0.5 和 0.3 px边框的。<pre><code>@media (-webkit-min-device-pixel-ratia: 2) {
-    .harelines .ele{
-        border-width: 0.5px;
-    }
+<li>
+<p>前台js判断增加hareline class</p>
+<pre><code>!function () {
+    var ua = navigator.userAgent;
+    var appv = navigator.appVersion;
+    var isIos = /iP(hone|od|ad)/.test(ua);
+    var html = document.documentElement;
+
+    !function () {
+        //1. ios, HTML.fl-ios
+        //2. ios version &gt; 8, HTML.fl-hairlines
+        var vArr, ver;
+
+        if (isIos) {
+            html.classList.add(&ldquo;fl-ios&rdquo;);
+            vArr = appv.match(/OS (\d+)_(\d+)_?(\d+)?/);
+            ver = parseInt(vArr[1], 10);
+
+            if (ver &gt;= 8) {
+                html.classList.add(&ldquo;fl-hairlines&rdquo;);
+            }
+        }
+    }();
+}();</code></pre>
+</li>
+<li>
+<p>对ios7以下和其他android机：维持原样，不去处理，随着时间的推移，最终都会支持0.5 和 0.3 px边框的。</p>
+<pre><code>.fl-hairline .ele{
+    border-width: 0.5px;
 }
 </code></pre>
 </li>
