@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 地理位置定位 API 接口开发</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html, #mapContent { width: 100%; height: 100%; overflow: hidden; margin: 0; }
+    </style>
+
+	<script src="http://static2.51fanli.net/common/libs/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.0&type=quick&ak=0Pgg5YYuwdOftEbExkLYAq46"></script>
+ <!-- 
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+-->
+
+</head>
+
+<body>
+    <div id="mapContent"></div>
+
+    <script type="text/javascript">
+        /*
+        var local = new BMap.LocalSearch(map, {
+            renderOptions: { map: map }
+        });
+        local.search("景点");
+        */
+        //map.centerAndZoom(new BMap.Point(116.404, 39.915), 14);
+        //var marker = new BMap.Marker(new BMap.Point(116.404, 39.915));        // 创建标注      
+        //map.addOverlay(marker);
+
+        /*
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);  // 编写自定义函数，创建标注     
+        function addMarker(point, index) {  // 创建图标对象     
+            var myIcon = new BMap.Icon("http://api.map.baidu.com/mapCard/img/location.gif",
+                new BMap.Size(14, 23), {
+                    // 指定定位位置。     
+                    // 当标注显示在地图上时，其所指向的地理位置距离图标左上      
+                    // 角各偏移7像素和25像素。您可以看到在本例中该位置即是     
+                    // 图标中央下端的尖角位置。      
+                    anchor: new BMap.Size(7, 25),
+                });
+            // 创建标注对象并添加到地图     
+            var marker = new BMap.Marker(point, { icon: myIcon });
+            map.addOverlay(marker);
+
+            marker.addEventListener("click", function () {
+                alert("您点击了标注");
+            });
+        }
+        // 随机向地图添加10个标注      
+        var bounds = map.getBounds();
+        var lngSpan = bounds.getNorthEast().lng - bounds.getSouthWest().lng;
+        var latSpan = bounds.getNorthEast().lat - bounds.getSouthWest().lat;
+        for (var i = 0; i < 10; i++) {
+            var point = new BMap.Point(bounds.getSouthWest().lng + lngSpan * (Math.random() * 0.7 + 0.15), bounds.getSouthWest().lat + latSpan * (Math.random() * 0.7 + 0.15));
+            addMarker(point, i);
+        }
+        
+        console.log(map.currentCity);
+
+        */
+       
+        navigator.geolocation.getCurrentPosition(function (p) {
+            var latitude = p.coords.latitude;
+            var longitude = p.coords.longitude;
+            //createMap(latitude, longitude);
+            //document.write("所在位置： 经度 " + latitude + " 纬度 " + longitude);
+            fallback(longitude, latitude);
+
+        }, function (e) {
+            var msg = e.code + "\n" + e.message;
+            console.log(msg);
+        }, {
+                // 指示浏览器获取高精度的位置，默认为false 
+                enableHighAcuracy: true,
+                // 指定获取地理位置的超时时间，默认不限时，单位为毫秒 
+                timeout: 5000,
+                // 最长有效期，在重复获取地理位置时，此参数指定多久再次获取位置。 
+                maximumAge: 3000
+            }
+        );
+   
+        function fallback(longitude, latitude) {
+		
+		//$.getJSON("http://api.map.baidu.com/geocoder?location=38.990998,103.645966&output=json&key=28bcdd84fae25699606ffad27f8da77b&callback=showLocation")
+			
+		
+		
+            var map = new BMap.Map("mapContent");
+            var point = new BMap.Point(longitude, latitude);
+            //map.centerAndZoom(point, 14);
+
+            var zoomControl = new BMap.ZoomControl();
+            map.addControl(zoomControl);//添加缩放控件  
+            var scaleControl = new BMap.ScaleControl();
+            map.addControl(scaleControl);//添加比例尺控件 
+
+            var myIcon = new BMap.Icon("http://api.map.baidu.com/mapCard/img/location.gif", new BMap.Size(14, 23), {
+                // 指定定位位置。
+                // 当标注显示在地图上时，其所指向的地理位置距离图标左上角各偏移7像素和25像素。您可以看到在本例中该位置即是
+                // 图标中央下端的尖角位置。
+                anchor: new BMap.Size(7, 25),
+            });
+
+            // 创建标注对象并添加到地图     
+            var marker = new BMap.Marker(point, { icon: myIcon });
+            map.addOverlay(marker);
+
+            //var infoWindow = new BMap.InfoWindow("当前位置");
+            //map.openInfoWindow(infoWindow, point);
+            //marker.addEventListener("click", function () { this.openInfoWindow(infoWindow); });
+
+            var opts = {
+                width: 100,     // 信息窗口宽度
+                height: 50,     // 信息窗口高度
+                title: "Hello"  // 信息窗口标题
+            };
+
+            //var infoWindow = new BMap.InfoWindow("World", opts);         // 创建信息窗口对象
+            //map.openInfoWindow(infoWindow, marker.getPosition());        // 打开信息窗口
+            //marker.addEventListener("click", function () { this.openInfoWindow(infoWindow); });
+
+            var gc = new BMap.Geocoder();
+            gc.getLocation(point, function (rs) {
+                var addComp = rs.addressComponents;
+                // addComp.province 
+                // addComp.city 
+                // addComp.district 
+                // addComp.street 
+                // addComp.streetNumber
+                var opts = {
+                    width: 250,     // 信息窗口宽度
+                    height: 70,     // 信息窗口高度
+                    title: "当前地位："  // 信息窗口题目
+                };
+
+                var municipality = ["北京市", "天津市", "上海市", "重庆市"];
+
+                var infoWindow = new BMap.InfoWindow((municipality.indexOf(addComp.province) == -1 ? addComp.province : '') + 
+                    addComp.city + 
+                    addComp.district +
+                    addComp.street +
+                    addComp.streetNumber, opts);  // 创建信息窗口对象
+                
+                map.openInfoWindow(infoWindow, marker.getPosition()); //开启信息窗口
+
+                marker.addEventListener("click", function () { this.openInfoWindow(infoWindow); });
+
+            });
+        }
+
+        
+        /*
+        var map = new BMap.Map("mapContent");
+        var point = new BMap.Point(121.473754, 31.23037);
+        map.centerAndZoom(point, 15);
+
+        var geolocation = new BMap.Geolocation();
+
+        var geolocation = new BMap.Geolocation();
+        var gc = new BMap.Geocoder();
+
+
+        //关于状况码
+        //BMAP_STATUS_SUCCESS	检索成功。对应数值“0”。
+        //BMAP_STATUS_CITY_LIST	城市列表。对应数值“1”。
+        //BMAP_STATUS_UNKNOWN_LOCATION	地位成果未知。对应数值“2”。
+        //BMAP_STATUS_UNKNOWN_ROUTE	导航成果未知。对应数值“3”。
+        //BMAP_STATUS_INVALID_KEY	不法密钥。对应数值“4”。
+        //BMAP_STATUS_INVALID_REQUEST	不法恳求。对应数值“5”。
+        //BMAP_STATUS_PERMISSION_DENIED	没有权限。对应数值“6”。(自 1.1 新增)
+        //BMAP_STATUS_SERVICE_UNAVAILABLE	办事不成用。对应数值“7”。(自 1.1 新增)
+        //BMAP_STATUS_TIMEOUT	超时。对应数值“8”。(自 1.1 新增)
+        geolocation.getCurrentPosition(function (r) {
+            if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+
+                map.panTo(r.point);
+
+                var myIcon = new BMap.Icon("http://api.map.baidu.com/mapCard/img/location.gif", new BMap.Size(14, 23), {
+                    // 指定定位位置。
+                    // 当标注显示在地图上时，其所指向的地理位置距离图标左上角各偏移7像素和25像素。您可以看到在本例中该位置即是
+                    // 图标中央下端的尖角位置。
+                    anchor: new BMap.Size(7, 25),
+                });
+
+                var pt = r.point;
+                var message = "";
+
+                var municipality = ["北京市", "天津市", "上海市", "重庆市"];
+                var marker = new BMap.Marker(pt, { icon: myIcon });
+                map.addOverlay(marker);
+
+                gc.getLocation(pt, function (rs) {
+                    var addComp = rs.addressComponents;
+                    //alert(addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber);
+
+                    var opts = {
+                        width: 250,     // 信息窗口宽度
+                        height: 90,     // 信息窗口高度
+                        title: "当前地位："  // 信息窗口题目
+                    };
+
+                    var infoWindow = new BMap.InfoWindow((municipality.indexOf(addComp.province) == -1 ? addComp.province : '') +
+                        addComp.city +
+                        addComp.district +
+                        addComp.street +
+                        addComp.streetNumber, opts);  // 创建信息窗口对象
+                    map.openInfoWindow(infoWindow, pt); //开启信息窗口
+
+                    marker.addEventListener("click", function () { this.openInfoWindow(infoWindow, pt); });
+
+                });
+            }
+            else {
+                alert("failed" + this.getStatus());
+            }
+        });
+        */
+    </script>
+</body>
+</html>
