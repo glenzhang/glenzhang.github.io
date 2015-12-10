@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <title>Glen's garden</title>
+
+    <script src="static/common/libs/html5shiv/html5shiv-3.7.2.js"></script>
+    <link rel="stylesheet" href="static/common/css/base.css">
+    <link rel="stylesheet" href="static/common/libs/bootstrap/3.2.0/css/bootstrap.css">
+    <style>
+    .caption {
+        position: relative;
+        min-height: 150px;
+    }
+    .caption:after {
+        height: 8px;
+        width: 0;
+        left: 50%;
+        bottom: 0;
+        background-color: #CC3399;
+        position: absolute;
+        display: block;
+        content: "";
+        z-index: 1;
+        transition-property: width, left;
+        transition-duration: 0.25s;
+        transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+    .caption1:after {
+        background-color: #FF6633;
+    }
+    .caption2:after {
+        background-color: #CC6633;
+    }
+    .caption3:after {
+        background-color: #3399CC;
+    }
+    .caption4:after {
+        background-color: #669900;
+    }
+    .caption5:after {
+        background-color: #66CCCC;
+    }
+    .caption6:after {
+        background-color: #FFCC00;
+    }
+    .caption7:after {
+        background-color: #FF9933;
+    }
+    .caption8:after {
+        background-color: #CC6633;
+    }
+    .thumbnail:hover {
+        text-decoration: none;
+    }
+    .thumbnail:hover .caption:after {
+        width: 100%;
+        left: 0;
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://www.qianduanbiji.com/">ZhangLei</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://www.qianduanbiji.com/">Home</a>
+                    </li>
+                    <li><a href="http://www.qianduanbiji.com/tools">Tools</a>
+                    </li>
+                    <li><a href="http://www.qianduanbiji.com/reference">Reference</a>
+                    </li>
+                    <li class="active"><a href="http://www.qianduanbiji.com/about">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div style="height:70px;"></div>
+
+    <div class="container-fluid">
+        <div class="container">
+            <p>没事要折腾，有事更要折腾</p>
+            <p style="padding-left:100px;">glenzhang@live.com</p>
+        </div>
+    </div>
+
+    <div class="container center">
+        <ul>
+          <li>© 2015 Glen</li>
+        </ul>
+    </div>
+    
+</body>
+
+</html>
