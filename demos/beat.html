@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Beat</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style type="text/css">
+    /* reset.css */
+    html, body{margin:0;padding:0;border:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+    body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section{margin:0;padding:0;border:0;font-size:100%;font:inherit;}
+    article, aside, details, figcaption, figure, dialog, footer, header, hgroup, menu, nav, section{display:block;}
+    ol, ul{list-style:none;}
+    table{border-collapse:separate;border-spacing:0;}
+    table, th, td{vertical-align:middle;}
+    th, td, caption{text-align:left;font-weight:normal;}
+
+    /*typography.css*/
+    body{font:14px 'Helvetica Neue',Helvetica,STHeiTi,sans-serif; margin:0; background:#F0F0F0;}
+    .body-white{background:#FFF;}
+    a{text-decoration:none;}
+    a:active{outline:none;}
+    a.blue:link, a.blue:visited, .blue{color:#004475;}
+    a.blue:hover, a.blue:active{color:#F60;}
+    a.green:link, a.green:visited, .green{color:#3BC607;}
+    a.green:hover, a.green:active{color:#F60;}
+    a.orange:link, a.orange:visited, .orange{color:#F60;}
+    a.orange:hover, a.orange:active{color:#F60;}
+    a.red:link, a.red:visited, .red{color:#F00;}
+    a.red:hover, a.red:active{color:#F60;}
+    a.zero:link, a.zero:visited, .zero{color:#000;}
+    a.zero:hover, a.zero:active{color:#F60;}
+    a.three:link, a.three:visited, .three{color:#333;}
+    a.three:hover, a.three:active{color:#F60;}
+    a.six:link, a.six:visited, .six{color:#666;}
+    a.six:hover, a.six:active{color:#F60;}
+    a.nine:link, a.nine:visited, .nine{color:#999;}
+    a.nine:hover, a.nine:active{color:#F60;}
+    a.underline:link, a.underline:visited, a.underline:hover, a.underline:active{text-decoration:underline;}
+
+    .arial{font-family:Helvetica,Arial,sans-serif;}
+    .bold{font-weight:bold;}
+    .gt:after{content:" "; display:inline-block; width:0.5em; height:0.5em; margin-left:0.2em; border-top:1px solid #999; border-right:1px solid #999; -webkit-transform:rotate(45deg); transform:rotate(45deg); vertical-align:0.1em;}
+    .times{position:relative; display:inline-block; width:18px; height:18px; margin-right:5px; vertical-align:middle; text-indent:-8000px; overflow:hidden;}
+    .times:before, .times:after{position:absolute; top:8px; left:3px; display:block; width:12px; height:2px; overflow:hidden; background:#FFF; content:" ";}
+    .times:before{-webkit-transform:rotate(-45deg); transform:rotate(-45deg);}
+    .times:after{-webkit-transform:rotate(45deg); transform:rotate(45deg);}
+
+    .clearfix{*zoom:1;}
+    .clearfix:before, .clearfix:after{display:table; line-height:0; content:"";}
+    .clearfix:after{clear:both;}
+
+    .w100{display: block; width:100%; vertical-align:middle;}
+    .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    
+    .animated.infinite {
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+    }
+    
+    @-webkit-keyframes slideInUp {
+        from {
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+            visibility: hidden;
+        }
+        50% {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            visibility: visible;
+        }
+        to {
+            visibility: hidden;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+    }
+    
+    .slideInUp {
+        -webkit-animation-name: slideInUp;
+        animation-name: slideInUp;
+    }
+    
+    .ticket-box {
+        margin-top: 20px;
+    }
+    
+    .ticket-box li {
+        float: left;
+        width: 32%;
+        height: 150px;
+        border-bottom: 1px solid #000;
+        overflow: hidden;
+    }
+    
+    .ticket-box li:nth-child(2) {
+        margin: 0 2%;
+    }
+    
+    .ticket-box li:nth-child(5) {
+        margin: 0 2%;
+    }
+    
+    .ticket-box li:nth-child(8) {
+        margin: 0 2%;
+    }
+    
+    .ticket {
+        width: 100px;
+        height: 150px;
+        margin: 0 auto;
+        background-color: red;
+        font-size: 24px;
+        text-align: center;
+        visibility: hidden;
+    }
+    
+    .animation-delay50 {
+        animation-delay: 0.05s;
+        -webkit-animation-delay: 0.05s;
+    }
+    
+    .animation-delay100 {
+        animation-delay: 0.1s;
+        -webkit-animation-delay: 0.1s;
+    }
+    
+    .animation-delay150 {
+        animation-delay: 0.15s;
+        -webkit-animation-delay: 0.15s;
+    }
+    
+    .animation-delay200 {
+        animation-delay: 0.2s;
+        -webkit-animation-delay: 0.2s;
+    }
+    </style>
+</head>
+
+<body>
+    <ul class="ticket-box clearfix">
+        <li>
+            <section class="J_ticket ticket animated">1</section>
+        </li>
+        <li>
+            <section class="J_ticket ticket animated">2</section>
+        </li>
+        <li>
+            <section class="J_ticket ticket animated">3</section>
+        </li>
+        <li>
+            <section class="J_ticket ticket animated">4</section>
+        </li>
+        <li>
+            <section class="J_ticket ticket animated">5</section>
+        </li>
+        <li>
+            <section class="J_ticket ticket animated">6</section>
+        </li>
+        <li>
+            <section class="J_ticket ticket animated">7</section>
+        </li>
+        <li>
+            <section class="J_ticket ticket animated">8</section>
+        </li>
+        <li>
+            <section class="J_ticket ticket animated">9</section>
+        </li>
+    </ul>
+    <section>
+        <input type="button" id="J_start" value="开始">
+        <input value="1" id="J_input">
+    </section>
+   <script type="text/javascript" src="../static/common/libs/jquery/jquery-1.11.1.js"></script>
+    <script type="text/javascript">
+    (function() {
+
+        var $tickets = $(".J_ticket");
+        var count = $tickets.length;
+
+        var slideInUpClass = "slideInUp";
+        var m = 0;
+        var iId;
+
+        $tickets.on("webkitAnimationEnd", function(ev) {
+            $(this).removeClass(slideInUpClass);
+        }).on("touchstart", touchStartHandler);
+
+        function touchStartHandler() {
+            $(this).removeClass(slideInUpClass);
+            $("#J_input").val(m++);
+        }
+
+        function getRandomFourItem() {
+            var t = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+            var returnArr = [];
+
+            var rnd = Math.round(Math.random() * (count - 1));
+            returnArr.push(t[rnd]);
+            t.splice(rnd, 1);
+            rnd = Math.round(Math.random() * (count - 1 - 1));
+            returnArr.push(t[rnd]);
+            t.splice(rnd, 1);
+            rnd = Math.round(Math.random() * (count - 1 - 1 - 1));
+            returnArr.push(t[rnd]);
+            t.splice(rnd, 1);
+            rnd = Math.round(Math.random() * (count - 1 - 1 - 1 - 1));
+            returnArr.push(t[rnd]);
+
+            return returnArr;
+        }
+
+        function start() {
+            // 初次动画,下一次连续动画进入setInterval
+            $.each(getRandomFourItem(), function(idx, item) {
+                $tickets.eq(item).addClass("slideInUp animation-delay" + idx * 50);
+            });
+
+            iId = setInterval(function() {
+                // 防止webkitAnimationEnd不兼容的os,手动清除动画class
+                $tickets.removeClass("slideInUp animation-delay50 animation-delay100 animation-delay150 animation-delay200");
+
+                $.each(getRandomFourItem(), function(idx, item) {
+                    $tickets.eq(item).addClass("slideInUp animation-delay" + idx * 50);
+                });
+
+            }, 1.5 * 1000);
+        }
+
+        function tryToStop() {
+            setTimeout(function() {
+                clearInterval(iId);
+            }, 60 * 1000);
+        }
+
+        $("#J_start").on("click", function() {
+            $tickets.removeClass("slideInUp animation-delay50 animation-delay100 animation-delay150 animation-delay200");
+
+            clearInterval(iId);
+            start();
+            tryToStop();
+        });
+
+    }());
+    </script>
+</body>
+
+</html>
