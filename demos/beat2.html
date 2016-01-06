@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Beat</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style type="text/css">
+    /* reset.css */
+    html, body{margin:0;padding:0;border:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+    body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section{margin:0;padding:0;border:0;font-size:100%;font:inherit;}
+    article, aside, details, figcaption, figure, dialog, footer, header, hgroup, menu, nav, section{display:block;}
+    ol, ul{list-style:none;}
+    table{border-collapse:separate;border-spacing:0;}
+    table, th, td{vertical-align:middle;}
+    th, td, caption{text-align:left;font-weight:normal;}
+
+    /*typography.css*/
+    body{font:14px 'Helvetica Neue',Helvetica,STHeiTi,sans-serif; margin:0; background:#F0F0F0;}
+    .body-white{background:#FFF;}
+    a{text-decoration:none;}
+    a:active{outline:none;}
+    a.blue:link, a.blue:visited, .blue{color:#004475;}
+    a.blue:hover, a.blue:active{color:#F60;}
+    a.green:link, a.green:visited, .green{color:#3BC607;}
+    a.green:hover, a.green:active{color:#F60;}
+    a.orange:link, a.orange:visited, .orange{color:#F60;}
+    a.orange:hover, a.orange:active{color:#F60;}
+    a.red:link, a.red:visited, .red{color:#F00;}
+    a.red:hover, a.red:active{color:#F60;}
+    a.zero:link, a.zero:visited, .zero{color:#000;}
+    a.zero:hover, a.zero:active{color:#F60;}
+    a.three:link, a.three:visited, .three{color:#333;}
+    a.three:hover, a.three:active{color:#F60;}
+    a.six:link, a.six:visited, .six{color:#666;}
+    a.six:hover, a.six:active{color:#F60;}
+    a.nine:link, a.nine:visited, .nine{color:#999;}
+    a.nine:hover, a.nine:active{color:#F60;}
+    a.underline:link, a.underline:visited, a.underline:hover, a.underline:active{text-decoration:underline;}
+
+    .arial{font-family:Helvetica,Arial,sans-serif;}
+    .bold{font-weight:bold;}
+    .gt:after{content:" "; display:inline-block; width:0.5em; height:0.5em; margin-left:0.2em; border-top:1px solid #999; border-right:1px solid #999; -webkit-transform:rotate(45deg); transform:rotate(45deg); vertical-align:0.1em;}
+    .times{position:relative; display:inline-block; width:18px; height:18px; margin-right:5px; vertical-align:middle; text-indent:-8000px; overflow:hidden;}
+    .times:before, .times:after{position:absolute; top:8px; left:3px; display:block; width:12px; height:2px; overflow:hidden; background:#FFF; content:" ";}
+    .times:before{-webkit-transform:rotate(-45deg); transform:rotate(-45deg);}
+    .times:after{-webkit-transform:rotate(45deg); transform:rotate(45deg);}
+
+    .clearfix{*zoom:1;}
+    .clearfix:before, .clearfix:after{display:table; line-height:0; content:"";}
+    .clearfix:after{clear:both;}
+
+    .w100{display: block; width:100%; vertical-align:middle;}
+    
+    body {
+        background-color: #6C0307;
+    }
+    
+    .animated {
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    
+    .animated.infinite {
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+    }
+    
+    @-webkit-keyframes slideInUp {
+        from {
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+            visibility: hidden;
+        }
+        50% {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            visibility: visible;
+        }
+        to {
+            visibility: visible;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+    }
+    
+    .slideInUp {
+        -webkit-animation-name: slideInUp;
+        animation-name: slideInUp;
+    }
+    
+    .countdown-box {
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        font-size: 24px;
+        color: #fff;
+    }
+    
+    .total-box {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        font-size: 24px;
+        color: #fff;
+    }
+    
+    .ticket-box li {
+        float: left;
+        width: 49%;
+        height: 62px;
+        overflow: hidden;
+    }
+    
+    .ticket-box li:nth-child(2n) {
+        margin: 12% 0 0 2%;
+    }
+    
+    .ticket {
+        position: relative;
+        width: 142px;
+        height: 62px;
+        margin: 0 auto;
+        background-color: red;
+        font-size: 24px;
+        text-align: center;
+        visibility: hidden;
+        background: url(images/ticket.jpg) no-repeat 0 0;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+    .ticket-seat-box {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 60%;
+        height: 100%;
+        text-align: center;
+        display: -webkit-box;
+        -webkit-box-orient: horizontal;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+    }
+    
+    .ticket-seat {
+        padding: 4px 10px;
+        background-color: #FED700;
+        font-style: normal;
+        font-size: 12px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+    }
+    
+    .animation-delay50 {
+        animation-delay: 0.05s;
+        -webkit-animation-delay: 0.05s;
+    }
+    
+    .animation-delay100 {
+        animation-delay: 0.1s;
+        -webkit-animation-delay: 0.1s;
+    }
+    
+    .animation-delay150 {
+        animation-delay: 0.15s;
+        -webkit-animation-delay: 0.15s;
+    }
+    
+    .animation-delay200 {
+        animation-delay: 0.2s;
+        -webkit-animation-delay: 0.2s;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div class="countdown-box" id="J_countdown">60</div>
+    <div class="ticket-box">
+        <ul>
+            <li>
+                <section>
+                    <section class="J_ticket ticket animated">
+                        <article class="ticket-seat-box"><i class="J_ticket_seat ticket-seat"></i></article>
+                    </section>
+                </section>
+            </li>
+            <li>
+                <section>
+                    <section class="J_ticket ticket animated">
+                        <article class="ticket-seat-box"><i class="J_ticket_seat ticket-seat"></i></article>
+                    </section>
+                </section>
+            </li>
+            <li>
+                <section>
+                    <section class="J_ticket ticket animated">
+                        <article class="ticket-seat-box"><i class="J_ticket_seat ticket-seat"></i></article>
+                    </section>
+                </section>
+            </li>
+            <li>
+                <section>
+                    <section class="J_ticket ticket animated">
+                        <article class="ticket-seat-box"><i class="J_ticket_seat ticket-seat"></i></article>
+                    </section>
+                </section>
+            </li>
+            <li>
+                <section>
+                    <section class="J_ticket ticket animated">
+                        <article class="ticket-seat-box"><i class="J_ticket_seat ticket-seat"></i></article>
+                    </section>
+                </section>
+            </li>
+            <li>
+                <section>
+                    <section class="J_ticket ticket animated">
+                        <article class="ticket-seat-box"><i class="J_ticket_seat ticket-seat"></i></article>
+                    </section>
+                </section>
+            </li>
+            <li>
+                <section>
+                    <section class="J_ticket ticket animated">
+                        <article class="ticket-seat-box"><i class="J_ticket_seat ticket-seat"></i></article>
+                    </section>
+                </section>
+            </li>
+            <li>
+                <section>
+                    <section class="J_ticket ticket animated">
+                        <article class="ticket-seat-box"><i class="J_ticket_seat ticket-seat"></i></article>
+                    </section>
+                </section>
+            </li>
+            <li>
+                <section>
+                    <section class="J_ticket ticket animated">
+                        <article class="ticket-seat-box"><i class="J_ticket_seat ticket-seat"></i></article>
+                    </section>
+                </section>
+            </li>
+            <li>
+                <section>
+                    <section class="J_ticket ticket animated">
+                        <article class="ticket-seat-box"><i class="J_ticket_seat ticket-seat"></i></article>
+                    </section>
+                </section>
+            </li>
+        </ul>
+    </div>
+    <div id="J_total" class="total-box">0</div>
+   <script type="text/javascript" src="../static/common/libs/jquery/jquery-1.11.1.js"></script>
+    <script type="text/javascript">
+    (function() {
+        var $tickets = $(".J_ticket");
+        var $total = $("#J_total");
+        var $countdown = $("#J_countdown");
+        var count = $tickets.length;
+
+        var seatLevel = ["无座", "硬座", "软座", "硬卧", "软卧", "高级软卧", "二等座", "一等座", "特等座", "商务座"];
+
+        var seatLevelMap = {
+            "无座": 1,
+            "硬座": 2,
+            "软座": 3,
+            "硬卧": 4,
+            "软卧": 5,
+            "高级软卧": 6,
+            "二等座": 7,
+            "一等座": 8,
+            "特等座": 9,
+            "商务座": 10
+        };
+
+        var itemIndexArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+        var slideInUpClass = "slideInUp";
+        var slideUionClass = "slideInUp animation-delay50 animation-delay100 animation-delay150 animation-delay200";
+
+        var iId;
+        var intervalId;
+
+        var countdownSecond = 59;
+
+        $tickets.on("webkitAnimationEnd", function(ev) {
+            $(this).removeClass(slideInUpClass);
+        }).on("touchstart click", touchStartHandler);
+
+        function touchStartHandler() {
+            var $this = $(this);
+            var $seat = $this.find(".J_ticket_seat")
+            $this.removeClass(slideUionClass);
+            $total.text(parseInt($total.text()) + seatLevelMap[$seat.text()]);
+        }
+
+        function getRandom(originalArr, limit) {
+            var length = originalArr.length;
+            var returnArr = [];
+            var rnd;
+            originalArr = [].concat(originalArr)
+
+            for (var i = 0; i < limit; i++) {
+                rnd = Math.round(Math.random() * (length - 1 - i));
+                returnArr.push(originalArr[rnd]);
+                originalArr.splice(rnd, 1);
+            }
+
+            return returnArr;
+        }
+
+        function start() {
+            // 初次动画,下一次连续动画进入setInterval
+            animtion();
+
+            iId = setInterval(function() {
+                // 防止webkitAnimationEnd不兼容的os,手动清除动画class
+                $tickets.removeClass(slideUionClass);
+
+                setTimeout(function() {
+                    animtion();
+                }, 25);
+
+            }, 2.5 * 1000);
+        }
+
+        function animtion() {
+            var seatLevelArr = getRandom(seatLevel, 4)
+            var itemArr = getRandom(itemIndexArr, 4);
+
+            $.each(itemArr, function(idx, item) {
+                var $current = $tickets.eq(item);
+                $current.find(".J_ticket_seat").html(seatLevelArr[idx]);
+                $current.addClass("slideInUp animation-delay" + (idx + 1) * 50);
+            });
+        }
+
+        intervalId = setInterval(function() {
+            if (countdownSecond <= 0) {
+                clearInterval(intervalId);
+                clearInterval(iId);
+
+                alert("恭喜您抢的积分：" + $total.text())
+            }
+
+            $countdown.text(countdownSecond--);
+
+        }, 1 * 1000);
+
+        setTimeout(start, 25);
+
+    }());
+    </script>
+</body>
+
+</html>
