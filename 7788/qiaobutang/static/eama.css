@@ -1,6 +1,5 @@
 /* reset.css */
 html, body { margin: 0; padding: 0; border: 0; -webkit-text-size-adjust: none; }
-html { overflow-y: scroll; }
 body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; }
 article, aside, details, figcaption, figure, dialog, footer, header, hgroup, menu, nav, section { display: block; }
 body { line-height: 1; background: #fff; }
@@ -92,6 +91,7 @@ hr.space { background: #fff; color: #fff; visibility: hidden; }
 .clearfix, .container { *zoom: 1; }
 
 
+html, body{overflow:hidden;}
 body { background: #94101B url(bg1.jpg) no-repeat 0 0 scroll;background-size:cover;}
 .mt10 { margin-top: 10px; }
 
