@@ -93,7 +93,7 @@
             }
         });
 
-        $cydj.append(name + "" + dept + " ");
+        $cydj.append(name + "(" + dept + ") ");
 
         localStorage.setItem("ydj{0}".format($ydj.val()), $cydj.prop("outerHTML"));
 
