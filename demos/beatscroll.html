@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>FUI</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="dns-prefetch" href="//l0.51fanli.net">
+    <link rel="dns-prefetch" href="//l1.51fanli.net">
+    <link rel="dns-prefetch" href="//l2.51fanli.net">
+    <link rel="dns-prefetch" href="//l3.51fanli.net">
+    <link rel="dns-prefetch" href="//l4.51fanli.net">
+    <link rel="dns-prefetch" href="//static2.51fanli.net">
+    <link rel="shortcut icon" href="http://www.fanli.com/favicon.ico">
+    <link rel="apple-touch-icon" href="http://www.fanli.com/apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="http://static2.51fanli.net/static/fmall-paylist-success-css.css">
+    <script id="J_script_attrsniffer" data-remwidth="750" data-remswitch="1" src="http://static2.51fanli.net/static/?f=webapp/js/common/attrsniffer.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+    <style type="text/css">
+    .box {
+        height: 0.8rem;
+        overflow: hidden;
+    }
+    
+    .box ul {
+        animation-duration: 8s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-timing-function: steps(4, end);
+        animation-name: css3ScrollText;
+    }
+    
+    p {
+        height: 0.4rem;
+        line-height: 0.4rem;
+    }
+
+    p:nth-child(2n) {
+        background: red;
+    }
+
+    p:nth-child(2n+1) {
+        background: gray;
+    }
+    
+    @-webkit-keyframes css3ScrollText {
+        0% {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        100% {
+            -webkit-transform: translate3d(0, -3.2rem, 0);
+            transform: translate3d(0, -3.2rem, 0);
+        }
+    }
+    </style>
+
+    <div class="box">
+        <ul>
+            <li>
+                <p>row 1</p>
+                <p>row 2</p>
+            </li>
+            <li>
+                <p>row 3</p>
+                <p>row 4</p>
+            </li>
+            <li>
+                <p>row 5</p>
+                <p>row 6</p>
+            </li>
+            <li>
+                <p>row 7</p>
+                <p>row 8</p>
+            </li>
+        </ul>
+    </div>
+    <script src="http://static2.51fanli.net/common/libs/headjs/head.load.min.js"></script>
+    <script src="http://static2.51fanli.net/common/libs/fmu/js/vendors/jquery/jquery.min.js"></script>
+</body>
+
+</html>
