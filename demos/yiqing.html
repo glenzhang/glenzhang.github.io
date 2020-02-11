@@ -1,0 +1,605 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>返利与你携手抗“疫”</title>
+    <meta name="flpn" content="huodongapp_hd_yiqing2020_index" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="dns-prefetch" href="//l0.51fanli.net">
+    <link rel="dns-prefetch" href="//l1.51fanli.net">
+    <link rel="dns-prefetch" href="//l2.51fanli.net">
+    <link rel="dns-prefetch" href="//l3.51fanli.net">
+    <link rel="dns-prefetch" href="//l4.51fanli.net">
+    <link rel="dns-prefetch" href="//static2.51fanli.net">
+    <link rel="shortcut icon" href="//www.fanli.com/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="//www.fanli.com/apple-touch-icon.png">
+    <link rel="stylesheet" href="//static2.51fanli.net/static/?f=webapp/css/base.css,common/libs/fmu/css/dialog.css,webapp/css/ui/grid.css,common/libs/fmu/css/navigator.css,huodong/yiqing2020/css/index.css&202002106_6920388648">
+    <script id="J_script_attrsniffer" data-remwidth="750" data-remswitch="1">
+        (function() {
+            /**
+             * 一般UA
+             * User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_4 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10B350 Safari/8536.25
+             * 返利APP UA
+             * 1. Fanli/4.0.0.112 (iPhone; iPhone OS 6.1.4; en_US; ID:1-6663128-7787518413510-17-3)
+             * 2. Fanli/4.3.0.31 (iPhone; iPhone OS 8.1.2; zh_CN; ID:1--63371201214502-17-3) context:com|fs
+             *
+             * Done
+             * 1. ios, HTML.fl-ios
+             * 2. ios version > 8, HTML.fl-hairlines
+             * 3. ua has 'context:com', fefine meta viewport width
+             */
+            var ua = navigator.userAgent.toLowerCase();
+            var appv = navigator.appVersion;
+            var html = document.documentElement;
+            var isIos = /ip(hone|od|ad)/i.test(ua);
+            var device = {
+                iphone: "iphone",
+                ipod: "ipod",
+                ipad: "ipad",
+                samsung: "samsung|sm-",
+                huawei: "huawei",
+                meizu: "mx[0-9]+"
+            };
+            var uaContextReg = /context\:([^\s]+)/i;
+            var tryToGetContext = uaContextReg.exec(ua);
+
+            var w = window.screen.width;
+            var h = window.screen.height;
+            var ratio = window.devicePixelRatio ? window.devicePixelRatio : 0;
+
+            var vArr, ver;
+            var dev;
+
+            if (isIos) {
+                html.classList.add("fl-ios");
+                vArr = appv.match(/OS (\d+)[_\.](?:\d+)[_\.]?(?:\d+)?/);
+                ver = parseInt(vArr[1], 10);
+
+                if (ver >= 8) {
+                    html.classList.add("fl-hairlines");
+                }
+
+                if(ratio == 3) {
+                    if( w = 375 && h == 812) { // iPhone X、iPhone XS
+                        html.classList.add("fl-ios-bangs", "fl-ios-x");
+                    } else if ( w = 414 && h == 896) { // iPhone XS Max
+                        html.classList.add("fl-ios-bangs", "fl-ios-xmax");
+                    }
+                }
+
+                if(ratio == 2 && w == 414 && h == 896) {
+                    html.classList.add("fl-ios-bangs", "fl-ios-xr");
+                }
+
+            } else {
+                vArr = appv;
+                ver = parseInt(ua.substr(ua.indexOf('android') + 8, 3));
+                html.classList.add("fl-android");
+
+                if (ver < 6) {
+                    html.classList.add("fl-android-" + ver);
+                }
+            }
+
+            for (dev in device) {
+                if (device.hasOwnProperty(dev)) {
+                    if ((new RegExp("\\b" + device[dev] + "\\b")).test(ua)) {
+                        html.classList.add("fl-" + dev);
+                        break;
+                    }
+                }
+            }
+
+            if (tryToGetContext && tryToGetContext[1] == 'com') {
+                document.querySelector('meta[name=viewport]')
+                    .setAttribute('content', 'initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0');
+            }
+
+        }());
+
+        (function() {
+
+            !/f\.(51)?fanli\.com/.test(document.domain) && document.addEventListener("DOMContentLoaded", function(ev) {
+                // var img = new Image();
+                // img.src = "ifanli://{0}/app/event/readystatechange?state=complete".format(ifanliProtocol);
+
+                // var script = document.createElement("script");
+                // var scriptSrc = document.createAttribute("src");
+                // scriptSrc.nodeValue = "ifanli://{0}/app/event/readystatechange?state=complete".format(ifanliProtocol);
+                // script.setAttributeNode(scriptSrc);
+                // document.getElementsByTagName("head")[0].appendChild(script);
+
+                // 经测试使用image, script src或是ajax发起ifanli://协议请求，浏览器报net::ERR_UNKNOWN_URL_SCHEME
+                // 选择iframe发起ifanli://协议请求
+                // 为了更好的利用浏览器机制，请将此JS置于head区域
+
+                var ua = navigator.userAgent.toLowerCase();
+                var isFanli = ua.indexOf('fanli') > -1;
+
+                if (isFanli) {
+                    var iframe = document.createElement("iframe");
+                    var iframeStyle = document.createAttribute("style");
+                    var iframeSrc = document.createAttribute("src")
+
+                    iframeStyle.nodeValue = "display:none;width:0;height:0;";
+                    iframeSrc.nodeValue = "ifanli://m.51fanli.com/app/event/readystatechange?state=complete";
+                    iframe.setAttributeNode(iframeStyle);
+                    iframe.setAttributeNode(iframeSrc);
+                    document.body.appendChild(iframe);
+
+                    setTimeout(function() {
+                        document.body.removeChild(iframe);
+                    }, 250);
+                }
+            }, false);
+        }());
+
+        (function(win, doc) {
+            var script = doc.querySelector("#J_script_attrsniffer");
+            var remwidth;
+            var remSwitch;
+            var remmaxwidth;
+            var evt = 'onorientationchange' in win ? 'orientationchange' : 'resize';
+            var timer = null;
+
+            var ua = navigator.userAgent.toLowerCase();
+            var isIos = /ip(hone|od|ad)/i.test(ua);
+            var isFanli = ua.indexOf('fanli') > -1;
+            var isIpad = /ipad/i.test(ua);
+
+            if (!script) {
+                return;
+            }
+
+            remwidth = script.getAttribute("data-remwidth");
+            remSwitch = script.getAttribute("data-remswitch");
+            remmaxwidth = script.getAttribute("data-remmaxwidth");
+
+            if (remSwitch == "[remswitch]") {
+                return;
+            }
+
+            remwidth = (remwidth == "[remwidth]" ? 750 : Number(remwidth));
+
+            function setFontSize() {
+                var docEl = doc.documentElement;
+                var winWidth = (isFanli && isIos && !isIpad) ? window.screen.width : docEl.getBoundingClientRect().width;
+
+                var originFontSize;
+                var definedFontSize = (winWidth / remwidth) * 100;
+
+                if (remmaxwidth && remmaxwidth !== "[remmaxwidth]" && definedFontSize > Number(remmaxwidth)) {
+                    definedFontSize = Number(remmaxwidth);
+                }
+
+                docEl.setAttribute('data-screenwidth', winWidth);
+                docEl.style.fontSize = definedFontSize + 'px';
+
+                originFontSize = parseFloat(window.getComputedStyle(docEl, null).getPropertyValue("font-size"));
+
+                if( !isIos && definedFontSize != originFontSize ){
+
+                    // originFontSize = (originFontSize % 1 === 0) ? (originFontSize + 0.5) : originFontSize;
+                    // docEl.style.fontSize = ( definedFontSize / originFontSize ) * definedFontSize + 'px';
+
+                    var html = document.getElementsByTagName('html')[0];
+                    var settedFs = settingFs = parseInt(html.style.fontSize);
+                    var whileCount = 0;
+
+                    while(true) {
+                        console.log(111);
+                        var realFs = parseInt(window.getComputedStyle(html).fontSize);
+                        var delta = realFs - settedFs;
+                        if (Math.abs(delta) >= 1) //不相等
+                        {
+                            if (delta > 0) realFs--; else realFs++;
+                            docEl.style.fontSize = realFs + 'px';
+                        } else
+                            break;
+                        if (whileCount++ > 100) //之所以弄个100的循环跳出的原因，在于实在无法预判设备是否能计算得到36px，比如设备只能计算35px，37px，这样会死循环只能跳出了
+                            break
+                    }
+                }
+            }
+
+            win.addEventListener(evt, function() {
+                clearTimeout(timer);
+                timer = setTimeout(setFontSize, 300);
+            }, false);
+
+            win.addEventListener("pageshow", function(e) {
+                if (e.persisted) {
+                    clearTimeout(timer);
+                    timer = setTimeout(setFontSize, 300);
+                }
+            }, false);
+
+            setFontSize();
+
+        }(window, document));
+
+        (function() {
+            localStorage.clear = function() {
+                // 覆写clear, 防止破坏性操作
+            };
+
+            // 清除个人中心已上线缓存
+            localStorage.removeItem('LS_JQUERY_LOCAL');
+            localStorage.removeItem('LS_VUE_LOCAL');
+
+            window.LSLibsCache = (function() {
+
+                var supportLibs = {
+                    jquery: {
+                        src: '//static2.51fanli.net/common/libs/fmu/js/vendors/jquery/jquery.min.js',
+                        version: 'v2.1.1',
+                        hash: 'a0a7b44651',
+                        keyprefix: '__LS_JQUERY',
+                        keyname: 'JQUERY_LS_KEY'
+                    },
+                    vue: {
+                        src: '//static2.51fanli.net/common/libs/fmu/js/vendors/vue/vue.min.js',
+                        version: 'v2.4.0',
+                        hash: 'aaf9c760ef',
+                        keyprefix: '__LS_VUE',
+                        keyname: 'VUE_LS_KEY'
+                    },
+                    zepto: {
+                        src: '//static2.51fanli.net/common/libs/gmu/zepto.min.js',
+                        version: 'v1.0.1',
+                        hash: '186b18d8bc',
+                        keyprefix: '__LS_ZEPTO',
+                        keyname: 'ZEPTO_LS_KEY'
+                    }
+                };
+
+                /**
+                 * load(['jquery', 'vue', 'zepto'], false)
+                 */
+                function _load(needlist, isstore) {
+                    for (var i = 0, len = needlist.length; i < len; i++) {
+                        var vendor = supportLibs[needlist[i]];
+                        if (!vendor) {
+                            continue;
+                        }
+                        if (!isstore) {
+                            loadScript(vendor);
+                        } else {
+                            prepareFile(vendor);
+                        }
+                    }
+                }
+
+                function prepareFile(vendor) {
+                    var k1 = localStorage.getItem(vendor.keyname);
+                    var k2 = vendor.keyprefix + '_' + vendor.version;
+
+                    if (k1 != k2) {
+                        localStorage.removeItem(k1); // 清除无效数据
+                        localStorage.removeItem(k2); // 清除无效数据
+                        loadScript(vendor);
+                        loadFile(vendor);
+                    } else {
+                        var content = localStorage.getItem(k2);
+                        if (content) {
+                            window.eval(content);
+                        } else {
+                            loadScript(vendor);
+                            loadFile(vendor);
+                        }
+                    }
+                }
+
+                function loadScript(vendor) {
+                    /**
+                     * 用于动态加载脚本
+                     */
+                    wagv.pageJsListArr.push(vendor.src + '?' + vendor.hash);
+                }
+
+                function loadFile(vendor) {
+                    var k = vendor.keyprefix + '_' + vendor.version;
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.open("GET", vendor.src + '?' + vendor.hash);
+                    xhr.send(null);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            localStorage.setItem(vendor.keyname, k);
+                            localStorage.setItem(k, xhr.responseText);
+                        }
+                    }
+                }
+
+                function _addLib(vendor) {
+                    loadFile(vendor);
+                }
+
+                return {
+                    load: _load,
+                    addLib: _addLib
+                }
+
+            })();
+        }());
+    </script>
+    <script>
+    var wagv = {
+        pn: '',
+        app: 'https://m.fanli.com/',
+        channels: {
+            superfl: {},
+            shop_domain: 'http://www.fanli.com/shop'
+        },
+        fanlitrack: {
+            pv: { s_pos: '' },
+            sv: {
+                spagename: '',
+                from: '0',
+                keyword: '',
+                appType: '',
+                stype: 'item'
+            }
+        },
+        isFromWeixin: navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1,
+        isFromFanli: navigator.userAgent.toLowerCase().indexOf("fanli") > -1,
+        loginTemFunctionAttr: "temfunction_" + Math.random().toString().replace(/\D/g, ''),
+        pageJsListArr: [],
+        pageJsLoadedCallbackArr: [],
+        inWeiXin: {}
+    };
+    </script>
+</head>
+
+<body>
+    <div class="J_sticky_container sticky-container">
+        <div class="yq-summary-box"><img class="w100" src="https://l0.51fanli.net/gaea/images/2020/02/5e3e7a581af61.png" alt=""><a class="rule J_rule" href="javascript:void(0)"></a>
+            <div class="yq-summary-wrap">
+                <h6 class="title">全国疫情实时数据</h6>
+                <p class="h-line"></p>
+                <ul class="fui-grid">
+                    <li class="fui-span1">
+                        <!--<p class="yq-num yq-num-qz">42708</p>-->
+                        <p class="yq-num bold yq-num-qz">42708</p>
+                        <p class="yq-sm">确诊</p>
+                        <p class="yq-more">较昨日<span class="yq-more-qz">+2484</span></p>
+                    </li>
+                    <li class="fui-span1">
+                        <!--<p class="yq-num yq-num-ys">21675</p>-->
+                        <p class="yq-num bold yq-num-ys">21675</p>
+                        <p class="yq-sm">疑似</p>
+                        <p class="yq-more">较昨日<span class="yq-more-ys">+3536</span></p>
+                    </li>
+                    <li class="fui-span1">
+                        <!--<p class="yq-num yq-num-sw">1017</p>-->
+                        <p class="yq-num bold yq-num-sw">1017</p>
+                        <p class="yq-sm">死亡</p>
+                        <p class="yq-more">较昨日<span class="yq-more-sw">+108</span></p>
+                    </li>
+                    <li class="fui-span1">
+                        <!--<p class="yq-num yq-num-zy">3998</p>-->
+                        <p class="yq-num bold yq-num-zy">3998</p>
+                        <p class="yq-sm">治愈</p>
+                        <p class="yq-more">较昨日<span class="yq-more-zy">+716</span></p>
+                    </li>
+                </ul>
+                <div class="yq-from"><span>*截至2020-02-11 09:19</span><span class="yq-from-sm">数据来源：各地区卫健委</span></div>
+            </div>
+            <div class="hot-eara" style="width:7.5rem; height:10.05rem;"><img data-original="https://l0.51fanli.net/gaea/images/2020/02/5e3f78d202ec5.png" src="https://static2.51fanli.net/common/images/loading/spacer.png" class="w100 J_lazyimg" /><a class="hot-eara-link" style="left:4.13rem; top:8.67rem; width:2.95rem; height:0.9rem;" href="https://daren.fanli.com/haowu/topicgather?topic_id=161&spm=page_name.h5.pty-rk~loc-20200202~std-57434"></a><a class="hot-eara-link" style="left:0.45rem; top:8.67rem; width:3.09rem; height:0.91rem;" href="https://huodong.fanli.com/hd/shopdayactivity/h5?id=1301&spm=page_name.h5.pty-chb~loc-yqym~std-52321"></a><a class="hot-eara-link" style="left:4.15rem; top:7.53rem; width:2.94rem; height:0.97rem;" href="https://s.fanli.com/71iHg?spm=page_name.h5.pty-rk~loc-41100~std-57434"></a><a class="hot-eara-link" style="left:0.47rem; top:7.52rem; width:3.06rem; height:0.99rem;" href="https://huodong.fanli.com/hd/shopdayactivity/h5?id=1279&spm=page_name.h5.pty-rk~loc-20200232~std-57434"></a><a class="hot-eara-link" style="left:3.83rem; top:5.35rem; width:3.41rem; height:1.82rem;" href="https://s.fanli.com/71eyI?spm=page_name.h5.pty-rk~loc-1020~std-57434"></a><a class="hot-eara-link" style="left:0.28rem; top:5.34rem; width:3.4rem; height:1.83rem;" href="https://s.fanli.com/71jj3?spm=page_name.h5.pty-rk~loc-1010~std-57434"></a><a class="hot-eara-link" style="left:4.99rem; top:4.4rem; width:2.12rem; height:0.62rem;" href="https://s.fanli.com/71yvm?spm=page_name.h5.pty-rk~loc-41500~std-57435"></a><a class="hot-eara-link" style="left:2.7rem; top:4.4rem; width:2.11rem; height:0.6rem;" href="https://s.fanli.com/71wso?spm=page_name.h5.pty-rk~loc-41400~std-57435"></a><a class="hot-eara-link" style="left:0.42rem; top:4.42rem; width:2.11rem; height:0.57rem;" href="https://s.fanli.com/71Z6G?spm=page_name.h5.pty-rk~loc-41300~std-57434"></a><a class="hot-eara-link" style="left:5.01rem; top:3.68rem; width:2.09rem; height:0.56rem;" href="https://s.fanli.com/7xPL4?spm=page_name.h5.pty-rk~loc-41000~std-57434"></a><a class="hot-eara-link" style="left:2.7rem; top:3.69rem; width:2.08rem; height:0.58rem;" href="https://s.fanli.com/7xRGr?spm=page_name.h5.pty-rk~loc-40600~std-57434"></a><a class="hot-eara-link" style="left:0.41rem; top:3.68rem; width:2.09rem; height:0.59rem;" href="https://s.fanli.com/7xn6M?spm=page_name.h5.pty-rk~loc-40500~std-57434"></a><a class="hot-eara-link" style="left:5.03rem; top:2.97rem; width:2.08rem; height:0.61rem;" href="https://s.fanli.com/71CDE?spm=page_name.h5.pty-rk~loc-40800~std-57434"></a><a class="hot-eara-link" style="left:2.71rem; top:2.96rem; width:2.08rem; height:0.63rem;" href="https://s.fanli.com/71Q8q?spm=page_name.h5.pty-rk~loc-40700~std-57434"></a><a class="hot-eara-link" style="left:0.43rem; top:2.93rem; width:2.08rem; height:0.61rem;" href="https://onwh.51rry.com?spm=page_name.h5.pty-rk~loc-40300~std-57434"></a><a class="hot-eara-link" style="left:5.56rem; top:0.94rem; width:1.46rem; height:1.87rem;" href="https://s.fanli.com/71cvD?spm=page_name.h5.pty-rk~loc-40900~std-57434"></a><a class="hot-eara-link" style="left:3.89rem; top:0.93rem; width:1.5rem; height:1.87rem;" href="https://s.fanli.com/7xR8x?spm=page_name.h5.pty-rk~loc-40200~std-57434"></a><a class="hot-eara-link" style="left:2.22rem; top:0.92rem; width:1.46rem; height:1.88rem;" href="https://daren.fanli.com/haowu/postdetail?type=pgc&post_id=50691&spm=page_name.h5.pty-rk~loc-20200222~std-57434"></a><a class="hot-eara-link" style="left:0.43rem; top:0.93rem; width:1.57rem; height:1.83rem;" href="https://s.fanli.com/71GVW?spm=page_name.h5.pty-rk~loc-40200232~std-57434"></a><a class="hot-eara-link" style="left:0.25rem; top:0.05rem; width:6.99rem; height:0.58rem;" href="https://s.fanli.com/71wso?spm=page_name.h5.pty-rk~loc-42100~std-57435"></a></div>
+        </div>
+        <div class="fmu-navigator-box J_nav_sticky">
+            <div id="J_fmu_navigator_wrapper" class="fmu-navigator-wrapper">
+                <nav id="J_fmu_navigator_scroller" class="fmu-navigator-scroller">
+                    <ul>
+                        <li><a href="javascript:void(0);" data-spm="page_name.h5.pty-nav~itemid-568601~std-67904"><span>消毒防护</span></a></li>
+                        <li><a href="javascript:void(0);" data-spm="page_name.h5.pty-nav~itemid-568597~std-67904"><span>热剧看不停</span></a></li>
+                        <li><a href="javascript:void(0);" data-spm="page_name.h5.pty-nav~itemid-568595~std-67904"><span>新鲜美味到家</span></a></li>
+                        <li><a href="javascript:void(0);" data-spm="page_name.h5.pty-nav~itemid-568599~std-67904"><span>停工不停学</span></a></li>
+                        <li><a href="javascript:void(0);" data-spm="page_name.h5.pty-nav~itemid-568593~std-67904"><span>云米健康</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div>
+            <div class="hot-eara J_color" style="width:7.5rem; height:13.18rem;"><img data-original="https://l3.51fanli.net/gaea/images/2020/02/5e41443247f10.png" src="https://static2.51fanli.net/common/images/loading/spacer.png" class="w100 J_lazyimg" /><a class="hot-eara-link" style="left:0.585rem; top:7.175rem; width:3.09rem; height:2.65rem;" href="https://fun.fanli.com/goshop/go?id=808&go=https%3a%2f%2fmst.vip.com%2f8ry9p4rZpPLQI42Q6dWDDQ.php%3fwapid%3dmst_100014624%26_src%3dmst%26extra_banner%3d115014624%26nova%3d1%26nova_platform%3d1%26mst_page_type%3dguide%26msns%3diphone-7.12.7-link%26st%3ds-url%26cid%3d56120b500285a00561e38210d8e71613eb882f79%26chl_param%3dshare%253AAcH9kTfNaE%26abtid%3d5915f2497e63765a0ebbe1973dd0e2af%26uid%3d%26msns%3dshop_iphone-7.12.7-link%26st%3ds-url%26cid%3d56120b500285a00561e38210d8e71613eb882f79lc=zhyx_48160_913&dn=2&wp=1&ln=vipshop_transfer&spm=gaea.web.story-67904%7Elocation-57061%7Eitem-570111"></a><a class="hot-eara-link" style="left:0.585rem; top:1.315rem; width:3.09rem; height:2.82rem;" href="https://fun.fanli.com/goshop/go?id=2323&go=https%3A%2F%2Fmobile.yangkeduo.com%2Fpromotion_op.html%3Fid%3D123364&lc=basic_66523_loc3&dn=2&wp=1&spm=page_name.h5.pty-rk~loc-20200332~std-57434"></a><a class="hot-eara-link" style="left:3.905rem; top:9.95rem; width:2.94rem; height:2.69rem;" href="https://fun.fanli.com/goshop/go?id=544&lc=basic_66523_loc9&go=https%3A%2F%2Fpro.m.jd.com%2Fmall%2Factive%2FPneFj3fsDt3gyiP46CFvYcb7mTS%2Findex.html&sign=5007dbdd&wp=1&spm=page_name.h5.pty-rk%7Eloc-20200312%7Estd-57434"></a><a class="hot-eara-link" style="left:3.985rem; top:4.235rem; width:2.88rem; height:2.79rem;" href="https://fun.fanli.com/goshop/go?id=712&lc=super_12hd_65405_loc56&go=https%3A%2F%2Fs.click.taobao.com%2Ft%3Fe%3Dm%253D2%2526s%253D1mRy7RYDYYUcQipKwQzePCperVdZeJviyK8Cckff7TVRAdhuF14FMT%252BxCihyxi%252BAlovu%252FCElQOutxO3%252FNS63Kt8wibl8gOiF48GRTSwDu1JBEs%252Bs1kc1eqV1279Zos3jnc8sjvQiJFVND1GytJvJSqLWMw3EOEsyJN2owMjhufzWQHAbSuwikMJsAaO8l4Vi%252FTN8Se8it7MebBjUVnw79oz6G0fvVpfqA2WfMOiylBFLUSMt2PJRg%252FB0z8qlrv%252Bj8DLfXVn5qACSXMV4ozPsJ9ZK2MhSOL36BIhITc5%252B2hSwMjlbOze3BZ8XaY204ddb7%252F1IwPk04o6K7MfulnMl%252FYJ6Izv6S1g8vjdKLCRmTn0i9RKOF5cRZodEnOU36A1GxiXvDf8DaRs%253D%26pvid%3D12019508%26union_lens%3DlensId%3A0bb698e5_0d74_1700de7747b_2d9b&sign=185791ec&wp=1&spm=page_name.h5.pty-dj%7Eloc-aljk%7Estd-65406"></a><a class="hot-eara-link" style="left:3.99rem; top:1.33rem; width:2.84rem; height:2.81rem;" href="https://fun.fanli.com/goshop/go?id=808&go=https%3a%2f%2fmst.vip.com%2fuploadfiles%2fexclusive_subject%2fte%2fv1%2fo1mcscCC39mINGdZaDwt8A.php%3fwapid%3dmst_100014741%26extra_banner%3d0%26mst_cdi%3d1%26mst_page_type%3dguide%26extra_type%3d1%26nova%3d1%26deeplink_cps%3dtra%3aC01V000cxlfxnz6n%3a%40_%401580639467846%3amig_code%3aF004ifg994vo05ak0yz7%3a2e57b085c5894205a5178cc1938c94da%26msns%3diphone-7.12.7-link%26st%3ds-url%26cid%3d56120b500285a00561e38210d8e71613eb882f79%26chl_param%3dshare%253ArFFRPVenb0%26abtid%3d2cfeea561f7da5b15fc24c082d628c87%26uid%3d%26msns%3dshop_iphone-7.12.7-link%26st%3ds-url%26cid%3d56120b500285a00561e38210d8e71613eb882f79&lc=zhyx_48160_913&dn=2&wp=1&ln=vipshop_transfer&spm=gaea.web.story-67904%7Elocation-57061%7Eitem-568623"></a><a class="hot-eara-link" style="left:0.04398rem; top:4.235rem; width:2.88rem; height:2.79rem;" href="https://fun.fanli.com/goshop/go?id=864&go=https%3A%2F%2Fcuxiao.m.suning.com%2Fscms%2Fkbdzc.html&lc=appbanner_shop_jz_093&dn=2&wp=1&spm=page_name.h5.pty-jdred~id-75"></a><a class="hot-eara-link" style="left:3.98rem; top:7.17rem; width:2.89rem; height:2.68rem;" href="https://fun.fanli.com/goshop/go?id=1733&go=https%3A%2F%2Fwww.amazon.cn%2Fb%2Fref%3Dmh_2324352071_Oct_mgwtcg-Tcg-slide-1--3a1ef7a6-901a-4dfb-9c72-2dfbcb9fd1d1%3Fsrs%3D2324352071%26rh%3Di%253Aspecialty-aps%252Cn%253A2324352071%26ie%3DUTF8%26node%3D2324352071%26clicktime%3D1580915369%26scene%3D1%26enterid%3D1580915369%26from%3Dgroupmessage%26isappinstalled%3D0&lc=basic_66523_loc95&dn=2&wp=1&spm=page_name.h5.pty-rk~loc-20200862~std-57434"></a><a class="hot-eara-link" style="left:0.54rem; top:10.08rem; width:3.1rem; height:2.56rem;" href="https://super.fanli.com/h5/zc/?id=4597&spm=page_name.h5.pty-dj~loc-appbar~std-65405&lc=super_12hd_65405_loc5"></a></div>
+            <div class="hot-eara J_color" style="width:7.5rem; height:6.88rem;"><img data-original="https://l1.51fanli.net/gaea/images/2020/02/5e415711ac961.png" src="https://static2.51fanli.net/common/images/loading/spacer.png" class="w100 J_lazyimg" /><a class="hot-eara-link" style="left:0.435rem; top:1.085rem; width:3.21rem; height:2.49rem;" href="https://fun.fanli.com/goshop/go?id=712&go=https%3A%2F%2Fuland.taobao.com%2Fcoupon%2Fedetail%3Fe%3DqCWThdLZTlcE%252BdAb1JoOOpgp3WCJhMMLL8ydavKPjzcBhK21Iqt9fXy%252BlTZvTIhw%252Bx186dFAAA1ud9ahmhoghJaSK5qKn994a3DTz%252BWygMOwksixcOKrLieO62LyI2hNtPnORs8IuoFubrOiJDB1lEp%252BKl%252Fq3XcYCDnibS%252FHvFbZeF9VVoymoS5W7iuXbSBLvG17a6W3O5I%253D%26traceId%3D0b57b78c15813330001161577e%26union_lens%3DlensId%3A0b57b76e_0c53_1702ecaafc8_44cf%26xId%3DLfgQcNSbgWh6HkVI0pD8exhShFt5pwVKp5VoinIZKe7GWltjI6FGQkrmSKspyxc3cmeE2seYYDFLHbXn5phU5V&lc=basic_66523_loc100&dn=2&wp=1&spm=page_name.h5.pty-rk~loc-20212000~std-57434"></a><a class="hot-eara-link" style="left:3.885rem; top:1.105rem; width:3.21rem; height:2.5rem;" href="https://s.fanli.com/71SAX?spm=page_name.h5.pty-rk~loc-20210000~std-57434"></a><a class="hot-eara-link" style="left:0.43rem; top:3.69rem; width:3.26rem; height:2.69rem;" href="ifanli://m.fanli.com/app/show/web?url=https%3A%2F%2Ffun.fanli.com%2Fgoshop%2Fgo%3Fid%3D2323%26go%3Dhttps%253A%252F%252Fmobile.yangkeduo.com%252Fgoods.html%253Fgoods_id%253D4537200319%26lc%3Dappbanner_shop_jz_017%26dn%3D2%26wp%3D1&wb=2&nologin=0&rf=16"></a><a class="hot-eara-link" style="left:3.895rem; top:3.7rem; width:3.21rem; height:2.69rem;" href="https://fun.fanli.com/goshop/go?id=1957&lc=basic_66523_loc6&sign=a0842f2c&wp=1&spm=page_name.h5.pty-rk%7Eloc-20200252%7Estd-57434"></a></div>
+            <div class="hot-eara J_color" style="width:7.5rem; height:6.95rem;"><img data-original="https://l0.51fanli.net/gaea/images/2020/02/5e41357077fea.png" src="https://static2.51fanli.net/common/images/loading/spacer.png" class="w100 J_lazyimg" /><a class="hot-eara-link" style="left:0.735rem; top:1.015rem; width:2.91rem; height:2.56rem;" href="https://shop.fanli.com/h5/elm?lc=basic_66523_loc5&spm=page_name.h5.pty-rk~loc-20200242~std-57434"></a><a class="hot-eara-link" style="left:0.735rem; top:3.72rem; width:2.95rem; height:2.76rem;" href="https://shop.fanli.com/h5/elm?lc=basic_66523_loc5&spm=page_name.h5.pty-rk~loc-20200242~std-57434"></a><a class="hot-eara-link" style="left:4.055rem; top:1.015rem; width:2.76rem; height:2.56rem;" href="https://fun.fanli.com/goshop/go?id=544&lc=basic_66523_loc8&go=https%3A%2F%2Fpro.m.jd.com%2Fmall%2Factive%2FnP11g2zS6XdjvFaiALqx5y9o2Tv%2Findex.html%3Futm_source%3Diosapp%26utm_medium%3Dappshare%26utm_campaign%3Dt_335139774%26utm_term%3DWxfriends%26ad_od%3Dshare%26from%3Dgroupmessage%26isappinstalled%3D0&sign=bf3bf4c7&dn=2&wp=1&spm=page_name.h5.pty-rk%7Eloc-20200282%7Estd-57434"></a><a class="hot-eara-link" style="left:4.025rem; top:3.72rem; width:2.84rem; height:2.76rem;" href="https://fun.fanli.com/goshop/go?id=544&lc=basic_66523_loc8&go=https%3A%2F%2Fh5.m.jd.com%2FbabelDiy%2FZeus%2F4JkCVz6z5RB4dBL7bZBwtGRiBLLw%2Findex.html&sign=4c7a75a0&wp=1&spm=page_name.h5.pty-rk%7Eloc-20200302%7Estd-57434"></a></div>
+            <div class="hot-eara J_color" style="width:7.5rem; height:9.72rem;"><img data-original="https://l0.51fanli.net/gaea/images/2020/02/5e3f9d9ca5cb6.png" src="https://static2.51fanli.net/common/images/loading/spacer.png" class="w100 J_lazyimg" /><a class="hot-eara-link" style="left:0.435rem; top:1.085rem; width:3.21rem; height:2.49rem;" href="https://huodong.fanli.com/hd/shopdayactivity/h5?id=1311&spm=page_name.h5.pty-bdshhd~id-015~std-65885&lc=bdsh_hd_65885_29"></a><a class="hot-eara-link" style="left:3.885rem; top:1.105rem; width:3.21rem; height:2.5rem;" href="https://s.fanli.com/713bp?spm=page_name.h5.pty-rk~loc-20200762~std-57434"></a><a class="hot-eara-link" style="left:0.43rem; top:3.69rem; width:3.26rem; height:2.69rem;" href="https://fun.fanli.com/goshop/go?id=544&go=https%3A%2F%2Fpro.m.jd.com%2Fmall%2Factive%2F46Vsus7SpKRgDbyAUitFHeBJnthu%2Findex.html%3F_native_qwd%3Dshare%26_native_p%3D4%257C6825&lc=appbanner_shop_jz_004&dn=2&wp=1&spm=page_name.h5.pty-jdred~id-65"></a><a class="hot-eara-link" style="left:3.895rem; top:3.7rem; width:3.21rem; height:2.69rem;" href="https://fun.fanli.com/goshop/go?id=450&go=http%3A%2F%2Fh5.dangdang.com%2Fmix_20191218_kv45&lc=basic_66523_loc1&dn=2&wp=1&spm=page_name.h5.pty-rk~loc-20201900~std-57434"></a><a class="hot-eara-link" style="left:0.45rem; top:6.61rem; width:3.18rem; height:2.84rem;" href="https://s.fanli.com/71DMc?spm=page_name.h5.pty-rk~loc-20201800~std-57434"></a><a class="hot-eara-link" style="left:3.885rem; top:6.6rem; width:3.29rem; height:2.87rem;" href="https://s.fanli.com/71Ufh?spm=page_name.h5.pty-rk~loc-20213000~std-57434"></a></div>
+            <div class="hot-eara J_color" style="width:7.5rem; height:7.07rem;"><img data-original="https://l0.51fanli.net/gaea/images/2020/02/5e3ea14a724e9.png" src="https://static2.51fanli.net/common/images/loading/spacer.png" class="w100 J_lazyimg" /><a class="hot-eara-link" style="left:0.44rem; top:0.985rem; width:3.22rem; height:2.83rem;" href="https://fun.fanli.com/goshop/go?id=712&pid=594470102307&lc=zhyx_taobao_62263_loc25&dn=2&wp=1&spm=page_name.h5.pty-rk~loc-1001~std-57434"></a><a class="hot-eara-link" style="left:3.885rem; top:0.995rem; width:3.21rem; height:2.82rem;" href="https://fun.fanli.com/goshop/go?id=712&pid=604298378152&lc=zhyx_taobao_62263_loc25&dn=2&wp=1&spm=page_name.h5.pty-rk~loc-1002~std-57434"></a><a class="hot-eara-link" style="left:0.41rem; top:3.995rem; width:3.26rem; height:2.69rem;" href="https://fun.fanli.com/goshop/go?id=712&pid=593406023385&lc=zhyx_taobao_62263_loc25&dn=2&wp=1&spm=page_name.h5.pty-rk~loc-1003~std-57434"></a><a class="hot-eara-link" style="left:3.9rem; top:3.965rem; width:3.21rem; height:2.69rem;" href="https://fun.fanli.com/goshop/go?id=712&go=https%3a%2f%2fs.click.taobao.com%2ft%3fe%3dm%253D2%2526s%253Dx%252F10u4L55a8cQipKwQzePDAVflQIoZeppRe%252F8jaAHci5VBFTL4hn2d7J3sMWfEDVlg6AtVBcXjxliJ1xfYPBd8hRywkCoh08Ts4OLr%252BHwzxeiSurjw9WQrIUYL5gs51GxgxdTc00KD8%253D&lc=zhyx_taobao_62263_loc25&dn=2&wp=1&spm=page_name.h5.pty-rk~loc-1004~std-57434"></a></div>
+        </div>
+    </div><a class="fixed-sider" href="https://daren.fanli.com/haowu/topicGather?topic_id=163&spm=page_name.h5.pty-rk~loc-100~std-57434" style="position:fixed; z-index:110; top:65%; right:0.05rem; width:1.71rem; height:1.22rem;"><img class="w100" src="https://l0.51fanli.net/gaea/images/2020/02/5e3e5a72a9f5e.png" alt=""></a>
+    <div class="fixed-bottom">
+        <div class="fixed-bottom-padding"><a class="fixed-bottom-btn J_fixed_bottom_btn" href="javascript:void(0)"><span>武汉加油<em class="J_fixed_bottom_num"></em>次</span></a></div>
+    </div>
+    <section class="fmu-dl-wrap rule-wrap" id="J_fmu_dl">
+        <h3>活动规则</h3>
+        <ul>
+            <li>本活动为全网疫情集合页，聚集各类疫情查询工具，内容引导及可跳转至各电商平台疫情物资购买；</li>
+            <li>由于本活动页涉及众多电商平台，各平台返利政策及跟单时间不同，具体规则请至各商城查看；</li>
+            <li>通过本活动页购买贝乐虎课程的用户，订单不跟单，无返利。购买课程赠送的优酷视频会员为贝乐虎商城提供，如有疑问可咨询贝乐虎商城客服；</li>
+            <li>“名师讲堂”教育集合活动页面仅为教育类商品聚合页，各平台返利政策和跟单情况不同，具体规则请查看各商场；</li>
+            <li>“名师讲堂”教育集合页活动页上的【VIPKID】、【VIP陪练】、【北辰教育】、【贝乐虎】、【核桃少儿编程】均不跟单，无返利，购买下单后的如产生订单疑问，请咨询对应品牌方客服；</li>
+            <li>在法律允许的范围内，返利网有权根据需要增删或修订本活动的条款（包括但不限于活动时间、是否返利、参与方式及统计方式等），增删或修订经活动页面公示后生效。</li>
+        </ul><a class="J_fmu_dl_close close" href="javascript:void(0)"></a>
+    </section><a class="J_wechat_share_btn" href='javascript:void(0);' style="display:none;" data-wxsession='{"cd": "cd", "target": "wx_session", "url": "https://huodong.fanli.com/hd/shopdayactivity/h5?id=1299&spm=cpn_zt.h5.module-entrance~std-67533","content": "疫情实时跟踪！全网口罩库存实时监控！抗击疫情，我们在行动！", "img": "https://l0.51fanli.net/gaea/images/2020/02/5e3e394c985a9.jpg","title": "返利与你携手抗“疫”", "spm": "", "options": ""}' data-wxtimeline='{"cd": "cd", "target": "wx_timeline", "url": "https://huodong.fanli.com/hd/shopdayactivity/h5?id=1299&spm=cpn_zt.h5.module-entrance~std-67533","content": "疫情实时跟踪！全网口罩库存实时监控！抗击疫情，我们在行动！", "img": "https://l0.51fanli.net/gaea/images/2020/02/5e3e394c985a9.jpg","title": "返利与你携手抗“疫”", "spm": "", "options": ""}'></a>
+    <script>
+    if (wagv.isFromWeixin) {
+
+        wagv.isSetWXShareTimeline = true;
+        wagv.isSetWXShareSession = true;
+
+        window.wxFanliConfig = {
+            debug: false,
+            // 朋友圈
+            timeline: {
+                title: "返利与你携手抗“疫”",
+                url: "https://huodong.fanli.com/hd/shopdayactivity/h5?id=1299&spm=cpn_zt.h5.module-entrance~std-67533",
+                img: "https://l0.51fanli.net/gaea/images/2020/02/5e3e394c985a9.jpg"
+            },
+            // 朋友
+            session: {
+                title: "返利与你携手抗“疫”",
+                desc: "疫情实时跟踪！全网口罩库存实时监控！抗击疫情，我们在行动！",
+                url: "https://huodong.fanli.com/hd/shopdayactivity/h5?id=1299&spm=cpn_zt.h5.module-entrance~std-67533",
+                img: "https://l0.51fanli.net/gaea/images/2020/02/5e3e394c985a9.jpg"
+            },
+
+            appId: "wx1ed0b4fd1468f895",
+            timestamp: "1581383965",
+            nonceStr: "cRf6QDAIMFlZlFzn",
+            signature: "da60bff010437aa0bf22efeb37b0665f7795e974",
+            jsApiList: ['onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareQZone',
+                'hideOptionMenu',
+                'hideMenuItems',
+                'hideAllNonBaseMenuItem',
+                'closeWindow',
+                'scanQRCode'
+            ]
+        };
+
+        wagv.pageJsListArr.push("//res.wx.qq.com/open/js/jweixin-1.0.0.js");
+        wagv.pageJsListArr.push("//static2.51fanli.net/static/?f=webapp/js/common/weixin/weixinguide.js&202002106_6920388648");
+
+        wagv.pageJsLoadedCallbackArr.push(function() {
+            var $wxTimeline = $("[data-wxtimeline]");
+            var $wxSession = $("[data-wxsession]");
+            var wxTimeline;
+            var wxSession;
+
+            var wxTimelineNeedOverrid = !wagv.isSetWXShareTimeline && $wxTimeline.length == 1;
+            var wxSessionNeedOverride = !wagv.isSetWXShareSession && $wxSession.length == 1;
+
+            if (wxTimelineNeedOverrid) {
+                wxTimeline = $wxTimeline.data("wxtimeline");
+
+                if (wxTimeline.title) {
+                    wxFanliConfig.timeline.title = wxTimeline.title;
+                }
+
+                if (wxTimeline.url) {
+                    wxFanliConfig.timeline.url = wxTimeline.url;
+                }
+
+                if (wxTimeline.img) {
+                    wxFanliConfig.timeline.img = wxTimeline.img;
+                }
+            }
+
+            if (wxSessionNeedOverride) {
+                wxSession = $wxSession.data("wxsession");
+
+                if (wxSession.title) {
+                    wxFanliConfig.session.title = wxSession.title;
+                }
+
+                if (wxSession.desc) {
+                    wxFanliConfig.session.desc = wxSession.desc;
+                }
+
+                if (wxSession.url) {
+                    wxFanliConfig.session.url = wxSession.url;
+                }
+
+                if (wxSession.img) {
+                    wxFanliConfig.session.img = wxSession.img;
+                }
+            }
+
+            // weixin config
+            wx.config({
+                debug: wxFanliConfig.debug,
+                appId: wxFanliConfig.appId,
+                timestamp: wxFanliConfig.timestamp,
+                nonceStr: wxFanliConfig.nonceStr,
+                signature: wxFanliConfig.signature,
+                jsApiList: wxFanliConfig.jsApiList
+            });
+
+            wx.ready(function() {
+                // 分享给朋友
+                wx.onMenuShareAppMessage({
+                    title: wxFanliConfig.session.title,
+                    desc: wxFanliConfig.session.desc,
+                    link: wxFanliConfig.session.url,
+                    imgUrl: wxFanliConfig.session.img,
+                    trigger: function(res) {
+                        //alert('用户点击发送给朋友');
+                    },
+                    success: function(res) {
+                        if (wagv.inWeiXin && typeof wagv.inWeiXin["shareAppSuccess"] == "function") {
+                            wagv.inWeiXin["shareAppSuccess"]();
+                        }
+                    },
+                    cancel: function(res) {
+                        //alert('已取消');
+                    },
+                    fail: function(res) {
+                        alert('分享失败');
+                    }
+                });
+
+                // 分享到朋友圈
+                wx.onMenuShareTimeline({
+                    title: wxFanliConfig.timeline.title,
+                    link: wxFanliConfig.timeline.url,
+                    imgUrl: wxFanliConfig.timeline.img,
+                    trigger: function(res) {
+                        //alert('用户点击分享到朋友圈');
+                    },
+                    success: function(res) {
+                        if (wagv.inWeiXin && typeof wagv.inWeiXin["shareTimelineSuccess"] == "function") {
+                            wagv.inWeiXin["shareTimelineSuccess"]();
+                        }
+                    },
+                    cancel: function(res) {
+                        //alert('已取消');
+                    },
+                    fail: function(res) {
+                        //alert(JSON.stringify(res));
+                        alert('分享失败');
+                    }
+                });
+            });
+
+            wx.error(function(res) {
+                // config信息验证失败会执行error函数，如签名过期导致验证失败，
+                // 具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+            });
+        });
+    }
+    </script>
+    <script src="//static2.51fanli.net/common/libs/headjs/head.load.min.js?v=1"></script>
+    <script>
+    (function() {
+        var libList = [];
+
+        libList.push('jquery');
+        LSLibsCache.load(libList, false);
+
+        if (wagv.isFromFanli) {
+            wagv.pageJsListArr.push("//static2.51fanli.net/static/webapp-fanli-bridge-js.js?202002106_6920388648");
+        }
+
+        wagv.pageJsListArr.push("//static2.51fanli.net/static/?f=webapp/js/base.js,appsdk/js/fanliapp.js,common/js/fanli/trace/ubt.js,common/libs/fmu/js/core/fmu.js,common/libs/fmu/js/core/widget.js,common/libs/fmu/js/extend/jquery.extend.js,common/libs/fmu/js/plugins/imglazyload.js,common/libs/fmu/js/plugins/iossticky.js&202002106_6920388648");
+        wagv.pageJsListArr.push("//static2.51fanli.net/static/?f=common/libs/fmu/js/widget/dialog.js,common/libs/fmu/js/vendors/iscroll/iscroll-lite-v5.js,common/libs/fmu/js/plugins/scrollspy.js,common/libs/fmu/js/plugins/navigator.js,webapp/js/common/hybridapi/nativefunction.js,webapp/js/common/weixin/share.js,huodong/yiqing2020/js/index.js&202002106_6920388648");
+        setTimeout(function() {
+            head.load(wagv.pageJsListArr, function() {
+                for (var i = 0, len = wagv.pageJsLoadedCallbackArr.length; i < len; ++i) {
+                    wagv.pageJsLoadedCallbackArr[i]();
+                }
+            });
+        }, 10);
+    }());
+    </script>
+</body>
+
+</html>
